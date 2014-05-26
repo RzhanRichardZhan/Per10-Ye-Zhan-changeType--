@@ -1,6 +1,6 @@
-class Ground extends Blocks{
-   Fround(){
-    properties = {true, false, false, false, false, false};
+class Finish extends Blocks{
+   Finish(){
+    properties = {false, true, false, false, false, false};
     path = brickIMG;
   }
   PImage outAct(){

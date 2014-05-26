@@ -1,12 +1,13 @@
-class Spikes extends Blocks{
-     Finish(){
+class Clouds extends Blocks{
+   Clouds(){
     path = brickIMG;
-        properties = {false, false, false, true, false, false};
-    isStandable = false;
+    properties = {true, true, false, false, false, false};
+    isStandable = true;
     isPassable = true;
     isFatal = false;
     isCoin = false;
     isMob = false;
+    isBreakable = false;
   }
   PImage outAct(){
     return brickIMG;//placeholder

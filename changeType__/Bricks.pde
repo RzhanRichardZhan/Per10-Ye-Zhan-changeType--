@@ -1,7 +1,11 @@
-class Bricks implements Blocks{
-  PImage outAct(){
-    return brickIMG;
+class Bricks extends Blocks{
+  Bricks() {
+    path = brickIMG;
+    properties = {true, false, false, false, false, true};
   }
-  void inAct(){
+  PImage outAct() {
+    return brickIMG;//placeholder
+  }}
+  void inAct() {
   }
-}
+  

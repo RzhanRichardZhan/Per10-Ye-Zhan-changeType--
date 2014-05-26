@@ -14,7 +14,7 @@ Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spike
 
 //#######################SPRITES############################
 PImage brickIMG;
-
+PImage playerIMG;
 
 
 void setup(){
