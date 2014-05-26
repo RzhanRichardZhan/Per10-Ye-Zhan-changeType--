@@ -5,7 +5,8 @@ class Bricks extends Blocks{
   }
   PImage outAct() {
     return brickIMG;//placeholder
-  }}
+  }
   void inAct() {
+  }
   }
   
