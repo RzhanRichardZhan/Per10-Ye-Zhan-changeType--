@@ -1,10 +1,10 @@
 class Spikes extends Blocks{
-     Finish(){
-    path = brickIMG;
-     properties = {false, false, false, true, false, false};
+  Spikes(){
+      path = brickIMG;
+      isStandable=true;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return spikeIMG;//placeholder
   }
   void inAct(){
   }

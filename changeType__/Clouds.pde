@@ -1,16 +1,10 @@
 class Clouds extends Blocks{
    Clouds(){
-    path = brickIMG;
-    properties = {true, true, false, false, false, false};
+    path = cloudIMG;
     isStandable = true;
-    isPassable = true;
-    isFatal = false;
-    isCoin = false;
-    isMob = false;
-    isBreakable = false;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return cloudIMG;//placeholder
   }
   void inAct(){
   }

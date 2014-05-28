@@ -1,10 +1,10 @@
 class Ground extends Blocks{
-   Fround(){
-    properties = {true, false, false, false, false, false};
+   Ground(){
     path = brickIMG;
+    isStandable=true;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return groundIMG;//placeholder
   }
   void inAct(){
   }

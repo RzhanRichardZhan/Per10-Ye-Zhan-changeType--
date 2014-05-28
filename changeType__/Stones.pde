@@ -1,10 +1,10 @@
 class Stones extends Blocks{
-     Finish(){
+     Stones(){
     path = brickIMG;
-    properties = {true, false, false, false, false, true};
+    isStandable = true;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return stoneIMG;//placeholder
   }
   void inAct(){
   }

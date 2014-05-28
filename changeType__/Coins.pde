@@ -1,10 +1,10 @@
 class Coins extends Blocks{
    Coins(){
     path = brickIMG;
-    properties = {true, true, false, true, false, false};
+    isStandable = false;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return coinIMG;//placeholder
   }
   void inAct(){
   }

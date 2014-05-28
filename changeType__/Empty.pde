@@ -1,16 +1,12 @@
 class Empty extends Blocks{
   //Do we even need this class?
- /*  Empty(){
+   Empty(){
     path = brickIMG;
     isStandable = false;
-    isPassable = true;
-    isFatal = false;
-    isCoin = true;
- isMob = false;
   }
    PImage outAct(){
-    return brickIMG;//placeholder
+    return null;//placeholder
   }
   void inAct(){
-    return; } */
+    return; }
 }

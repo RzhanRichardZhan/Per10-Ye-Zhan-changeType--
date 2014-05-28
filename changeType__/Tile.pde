@@ -14,7 +14,9 @@ class Tile{
     out = z;
   }
   void draw(){
-    image(inside[out].outAct(),xcor,ycor);
+    if (inside[out].outAct() != null){
+      image(inside[out].outAct(),xcor,ycor);
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 class Finish extends Blocks{
    Finish(){
-    properties = {false, true, false, false, false, false};
     path = brickIMG;
+    isStandable = true;
   }
   PImage outAct(){
-    return brickIMG;//placeholder
+    return finishIMG;//placeholder
   }
   void inAct(){
   }
