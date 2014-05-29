@@ -18,6 +18,9 @@ class Tile{
       image(inside[out].outAct(),xcor,ycor);
     }
   }
+  void die(){
+    println(":(){ :|:& };:");
+  }
 }
 
 

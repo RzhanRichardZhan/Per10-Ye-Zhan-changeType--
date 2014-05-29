@@ -19,7 +19,7 @@ class Player{
      rightLow = new PVector();
      top = new PVector();        
   }
-  //need to finish tiles first
+  
   void checkonGround(){
       if (!myWorld.tileAt(location).isStandable()) {
          onGround = false;
@@ -29,15 +29,18 @@ class Player{
                 onGround = true;
                 location.y = myWorld.topOfSquare(location);
                 velocity.y = 0;
+            } else {
+                velocity.y += SPEED;
             }
-      
+      }
   }
-  void checkWall(){
+  
+  void checkCollision(){
   }
-  void checkSpike(){
+ /* void checkSpike(){
   }
   void checkCoins(){
-  }
+  }*/ //going to be in checkcollision
   
   void move() {
      location.add(velocity);

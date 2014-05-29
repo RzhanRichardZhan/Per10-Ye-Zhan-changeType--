@@ -3,6 +3,7 @@ class Empty extends Blocks{
    Empty(){
     path = brickIMG;
     isStandable = false;
+    isPassable = true;
   }
    PImage outAct(){
     return null;//placeholder
