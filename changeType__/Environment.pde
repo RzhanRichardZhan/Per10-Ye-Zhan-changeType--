@@ -3,33 +3,77 @@ class Environment{
   Environment(){
     tiles = new Tile[21][21];
     
-    for (int i = 0; i < 21 ; i++){
+  /*  for (int i = 0; i < 21 ; i++){
       for (int j = 0; j < 21 ; j++){
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
-    }
-    
-    //level editor to be built
-    /*
-    for (int i = 0; i < 16; i++){//not efficient but just testing
-      for (int j = 0; j < 21; j++){
-        tiles[i][j] = new Tile(i,j,0);
-      }
-    }
-    tiles[11][1] = new Tile(11,1,5);
-    tiles[11][2] = new Tile(11,2,5);
-    tiles[11][3] = new Tile(11,3,5);
-    tiles[12][8] = new Tile(12,8,5);
-    tiles[12][10]= new Tile(12,10,2);
-    tiles[13][9]= new Tile(13,9,5);
-    tiles[12][10]= new Tile(12,10,2);
-    tiles[12][10]= new Tile(12,10,2);
-    tiles[12][10]= new Tile(12,10,2);
-    */
-    //this is so tedious, I don't even want to test it before making the level editor.
-    
-    
+    }*/
   }
+  
+  Tile[][] loadLevel(String path){
+    Tile[][] output = new Tile[22][22];
+    String[] raw = loadStrings(path);
+    int at = 0;
+    for(int k = 0; k <= 22; k++){
+       for(int j=0; k <= 22; j++){
+            switch (raw[k].charAt(at)) {
+              case "E":
+              default:
+                output[k][j] = inside[0];
+                break;
+              case "B":
+                output[k][j] = inside[1];
+                break;
+              case "$":
+                output[k][j] = inside[2];
+                break;
+              case "G":
+                output[k][j] = inside[3];
+                break;
+              case "K":
+                output[k][j] = inside[4];
+                break;
+              case "S":
+                output[k][j] = inside[5];
+                break;
+              case "C":
+                output[k][j] = inside[6];
+                break;
+              case "F":
+                output[k][j] = inside[7];
+                break;         
+            }
+            at++;
+        }
+        at = 0;
+      }
+  }
+  
+  float topOfSquare(PVector thisPosition) {
+        int thisY = int(thisPosition.y);
+        thisY /= 25;
+        return float(thisY*25);
+    }
+
+  float bottomOfSquare(PVector thisPosition) {
+        if (thisPosition.y<0) {
+            return 0;
+        }
+        return topOfSquare(thisPosition)+25;
+    }
+
+  float leftOfSquare(PVector thisPosition) {
+        int thisX = int(thisPosition.x);
+        thisX /= 25;
+        return float(thisX*25);
+    }
+
+  float rightOfSquare(PVector thisPosition) {
+        if (thisPosition.x<0) {
+            return 0;
+        }
+        return leftOfSquare(thisPosition)+25;
+    }
   Tile tileAt(PVector loc) {
         int row = (int)(loc.y/25);
         int col = (int)(loc.x/25);

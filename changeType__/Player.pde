@@ -13,17 +13,34 @@ class Player{
      location = new PVector(5*25, 5*25); //spawn at grid[5][5]
      onGround = alive = true;
          
-         
-         
-      }
+     leftHigh = new PVector();
+     rightHigh = new PVector();
+     leftLow = new PVector();
+     rightLow = new PVector();
+     top = new PVector();        
+  }
   //need to finish tiles first
   void checkonGround(){
+      if (!myWorld.tileAt(location).isStandable()) {
+         onGround = false;
+      }
+      if (!onGround) {
+            if (myWorld.tileAt(location).isGround()) {
+                onGround = true;
+                location.y = myWorld.topOfSquare(location);
+                velocity.y = 0;
+            }
+      
   }
   void checkWall(){
   }
   void checkSpike(){
   }
   void checkCoins(){
+  }
+  
+  void move() {
+     location.add(velocity);
   }
   
   void checkKeys() {
@@ -38,5 +55,7 @@ class Player{
         }
     }
   void draw(){
+    imageMode(CORNER);
+    
   }
 }
