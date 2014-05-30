@@ -1,7 +1,7 @@
 //#######################MAIN OBJECTS###########################
-Keyboard kb;
+Keyboard keyboard;
 Environment world;
-Player me;
+Player player;
 int score;
 
 //#######################TILES#####################################
