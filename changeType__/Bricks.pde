@@ -9,5 +9,6 @@ class Bricks extends Blocks{
   }
   void inAct() {
   }
-  }
+    
+}
   

@@ -19,7 +19,10 @@ class Tile{
     }
   }
   void die(){
-    println(":(){ :|:& };:");
+    out = 0;
+  }
+  int getBlock(){
+    return out;
   }
 }
 

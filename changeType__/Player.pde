@@ -21,13 +21,13 @@ class Player{
   }
   
   void checkonGround(){
-      if (!myWorld.tileAt(location).isStandable()) {
+      if (!inside[world.tileAt(location).getBlock()].isStandable) {
          onGround = false;
       }
       if (!onGround) {
-            if (myWorld.tileAt(location).isGround()) {
+            if (inside[world.tileAt(location).getBlock()].isStandable) {
                 onGround = true;
-                location.y = myWorld.topOfSquare(location);
+                location.y = world.topOfSquare(location);
                 velocity.y = 0;
             } else {
                 velocity.y += SPEED;
@@ -37,10 +37,16 @@ class Player{
   
   void checkCollision(){
   }
- /* void checkSpike(){
+  void checkSpike(){
+    //if (inside[world.tileAt(
   }
   void checkCoins(){
-  }*/ //going to be in checkcollision
+    if (world.tileAt(location).getBlock() == 2){
+      world.tileAt(location).die();
+      score+=100;
+    }
+  }
+   //going to be in checkcollision
   
   void move() {
      location.add(velocity);

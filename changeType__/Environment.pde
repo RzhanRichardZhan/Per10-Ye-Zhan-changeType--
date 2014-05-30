@@ -3,13 +3,13 @@ class Environment{
   Environment(){
     tiles = new Tile[21][21];
     
-  /*  for (int i = 0; i < 21 ; i++){
+    for (int i = 0; i < 21 ; i++){
       for (int j = 0; j < 21 ; j++){
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
-    }*/
+    }
   }
-  
+  /*
   Tile[][] loadLevel(String path){
     Tile[][] output = new Tile[22][22];
     String[] raw = loadStrings(path);
@@ -17,9 +17,9 @@ class Environment{
     for(int k = 0; k <= 22; k++){
        for(int j=0; k <= 22; j++){
             switch (raw[k].charAt(at)) {
-              case "E":
+              case 'E':
               default:
-                output[k][j] = inside[0];
+                output[k][j] = new Tile(k,j,inside[0]);
                 break;
               case "B":
                 output[k][j] = inside[1];
@@ -48,7 +48,7 @@ class Environment{
         at = 0;
       }
   }
-  
+  */
   float topOfSquare(PVector thisPosition) {
         int thisY = int(thisPosition.y);
         thisY /= 25;

@@ -1,6 +1,8 @@
+//#######################MAIN OBJECTS###########################
 Keyboard kb;
 Environment world;
 Player me;
+int score;
 
 //#######################TILES#####################################
 int EmptyIn = 0;
