@@ -3,6 +3,7 @@ class Tile{
   int xcor;  
   int ycor;
   int out;//index of outside features that will apply to this
+  int in;
   
 
   Tile(){
