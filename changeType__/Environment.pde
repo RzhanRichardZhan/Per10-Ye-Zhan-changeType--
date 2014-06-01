@@ -8,45 +8,46 @@ class Environment{
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
     } */
-    loadLevel("test.txt");
+    tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
     Tile[][] output = new Tile[22][22];
     String[] raw = loadStrings(path);
     int at = 0;
-    for(int k = 0; k <= 22; k++){
-       for(int j=0; k <= 22; j++){
+    for(int k = 0; k <= 21; k++){
+       for(int j=0; j <= 21; j++){
             switch (raw[k].charAt(at)) {
               case 'E':
               default:
-                output[k][j] = new Tile(k,j,inside[0]);
+                output[j][k] = new Tile(j,k,0);
                 break;
               case 'B':
-                output[k][j] = new Tile(k,j,inside[1]);
+                output[j][k] = new Tile(j,k,1);
                 break;
               case '$':
-                output[k][j] = new Tile(k,j,inside[2]);
+                output[j][k] = new Tile(j,k,2);
                 break;
               case 'G':
-                output[k][j] = new Tile(k,j,inside[3]);
+                output[j][k] = new Tile(j,k,3);
                 break;
               case 'K':
-                output[k][j] = new Tile(k,j,inside[4]);
+                output[j][k] = new Tile(j,k,4);
                 break;
               case 'S':
-                output[k][j] = new Tile(k,j,inside[5]);
+                output[j][k] = new Tile(j,k,5);
                 break;
               case 'C':
-                output[k][j] = new Tile(k,j,inside[6]);
+                output[j][k] = new Tile(j,k,6);
                 break;
               case 'F':
-                output[k][j] = new Tile(k,j,inside[7]);
+                output[j][k] = new Tile(j,k,7);
                 break;         
             }
             at++;
         }
         at = 0;
       }
+      return output;
   }
   
   float topOfSquare(PVector thisPosition) {

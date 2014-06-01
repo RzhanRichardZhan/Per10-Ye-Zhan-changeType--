@@ -53,13 +53,13 @@ class Player{
   }
   
   void checkKeys() {
-      if (kb.holdingLeft) {
+      if (keyboard.holdingLeft) {
           velocity.x -= SPEED;
        }
-       else if (kb.holdingRight) {
+       else if (keyboard.holdingRight) {
           velocity.x += SPEED;
        }
-       if (kb.holdingUp && onGround) {
+       if (keyboard.holdingUp && onGround) {
           velocity.y = -20;
         }
     }

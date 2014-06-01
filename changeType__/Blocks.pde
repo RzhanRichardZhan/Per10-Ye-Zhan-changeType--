@@ -5,7 +5,7 @@ abstract class Blocks{
   abstract PImage outAct();
   abstract void inAct();
   void ifStanding(){
-    player.location.y = world.topOfSquare(player.location.y);
+  /*  player.location.y = world.topOfSquare(player.location.y);
     player.velocity.y = 0;
   }
   void ifWallLeft(){
@@ -18,7 +18,7 @@ abstract class Blocks{
   }
   void ifCeiling(){
     player.location.y = world.bottomOfSquare(player.location.y);
-    player.velocity.y = 0;
+    player.velocity.y = 0;*/
   }
   
 }
