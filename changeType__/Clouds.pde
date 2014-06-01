@@ -8,5 +8,8 @@ class Clouds extends Blocks{
     return cloudIMG;//placeholder
   }
   void inAct(){
+    ifStanding();
+    ifCeiling();
+
   }
 }

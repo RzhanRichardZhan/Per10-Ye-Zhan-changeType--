@@ -8,6 +8,12 @@ class Bricks extends Blocks{
     return brickIMG;//placeholder
   }
   void inAct() {
+    ifStanding();
+    ifWallLeft();
+    ifWallRight();
+    if (ifCeiling()){
+      world.tileAt(player.location).nTile().die();
+    }
   }
     
 }

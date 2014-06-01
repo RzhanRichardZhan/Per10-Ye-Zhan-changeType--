@@ -11,11 +11,11 @@ class Environment{
     tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
-    Tile[][] output = new Tile[22][22];
+    Tile[][] output = new Tile[23][23];
     String[] raw = loadStrings(path);
     int at = 0;
-    for(int k = 0; k <= 21; k++){
-       for(int j=0; j <= 21; j++){
+    for(int k = 0; k <= 22; k++){
+       for(int j=0; j <= 22; j++){
             switch (raw[k].charAt(at)) {
               case 'E':
               default:
@@ -78,11 +78,20 @@ class Environment{
   Tile tileAt(PVector loc) {
         int row = (int)(loc.y/25);
         int col = (int)(loc.x/25);
-        if (row < 22 && col < 22)
+        if (row <= 22 && col <= 22)
             return tiles[row][col];
         else
             return null;
   }
+  Tile tileAt(float x, float y){
+    int row = (int)(y/25);
+    int col = (int)(x/25);
+    if (row <= 22 && col <= 22)
+      return tiles[row][col];
+    else
+      return null;
+  }
+    
   void draw(){
     for (Tile[] r : tiles){//is it row?
       for (Tile c :r){

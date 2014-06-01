@@ -4,21 +4,37 @@ abstract class Blocks{
   boolean isStandable, isPassable;
   abstract PImage outAct();
   abstract void inAct();
-  void ifStanding(){
-  /*  player.location.y = world.topOfSquare(player.location.y);
-    player.velocity.y = 0;
+  boolean ifStanding(){
+    if (player.location.y - world.tileAt(player.location).ycor-13 < 3 && player.location.y - world.tileAt(player.location).ycor-13 > 0){
+      player.location.y = world.topOfSquare(player.location); 
+      player.velocity.y = 0;
+      return true;
+    }
+    return false;
   }
-  void ifWallLeft(){
-    player.location.x = world.leftOfSquare(player.location.x);
-    player.velocity.x = 0;
+  boolean ifWallLeft(){
+    if (player.location.x - world.tileAt(player.location).xcor-13 < 3 && player.location.x - world.tileAt(player.location).xcor-13 > 0){
+      player.location.x = world.leftOfSquare(player.location);
+      player.velocity.x = 0;
+      return true;
+    }
+    return false;
   }
-  void ifWallRight(){
-    player.location.x = world.rightOfSquare(player.location.x);
-    player.velocity.x = 0;
+  boolean ifWallRight(){
+    if (player.location.x - world.tileAt(player.location).xcor+13 < 0 && player.location.x - world.tileAt(player.location).xcor+13 > -3){
+      player.location.x = world.rightOfSquare(player.location);
+      player.velocity.x = 0;
+      return true;
+    }
+    return false;
   }
-  void ifCeiling(){
-    player.location.y = world.bottomOfSquare(player.location.y);
-    player.velocity.y = 0;*/
+  boolean ifCeiling(){
+    if (player.location.y - world.tileAt(player.location).ycor+13 < 0 && player.location.y - world.tileAt(player.location).ycor+13 > -3){
+      player.location.y = world.bottomOfSquare(player.location);
+      player.velocity.y = 0;
+      return true;
+    }
+    return false;
   }
   
 }

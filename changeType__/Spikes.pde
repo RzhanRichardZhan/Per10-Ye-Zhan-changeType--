@@ -8,5 +8,7 @@ class Spikes extends Blocks{
     return spikeIMG;//placeholder
   }
   void inAct(){
+    println("oh no, you esploded");//placeholder
+    
   }
 }

@@ -16,11 +16,15 @@ class Tile{
   }
   void draw(){
     if (inside[out].outAct() != null){
-      image(inside[out].outAct(),xcor,ycor);
+      image(inside[out].outAct(),xcor-13,ycor-13);
     }
   }
   void die(){
     out = 0;
+    in = 0;
+  }
+  void act(){
+    inside[in].inAct();
   }
   int getBlock(){
     return out;

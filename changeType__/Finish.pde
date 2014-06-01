@@ -8,5 +8,6 @@ class Finish extends Blocks{
     return finishIMG;//placeholder
   }
   void inAct(){
+    println("CONGRATS");//placeholder
   }
 }

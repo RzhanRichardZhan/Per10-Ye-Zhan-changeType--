@@ -8,5 +8,9 @@ class Ground extends Blocks{
     return groundIMG;//placeholder
   }
   void inAct(){
+    ifStanding();
+    ifWallLeft();
+    ifWallRight();
+    ifCeiling();
   }
 }
