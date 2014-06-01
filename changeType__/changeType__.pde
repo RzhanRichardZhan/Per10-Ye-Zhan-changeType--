@@ -37,7 +37,16 @@ void setup(){
   size(550, 550);
   frameRate(48);
   world = new Environment();
+  keyboard = new Keyboard();
+  player = new Player();
 }
 void draw(){
+  pushMatrix();
   world.draw();
+  player.checkKeys();
+  player.move();
+  player.checkCollision();
+  player.checkonGround();
+  player.draw();  
+  popMatrix();
 }
