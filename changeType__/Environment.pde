@@ -11,6 +11,7 @@ class Environment{
     tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
+    player = new Player(3,13);
     Tile[][] output = new Tile[23][23];
     String[] raw = loadStrings(path);
     int at = 0;

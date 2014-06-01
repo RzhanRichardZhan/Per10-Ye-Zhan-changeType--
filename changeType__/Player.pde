@@ -1,6 +1,6 @@
 class Player{
   PVector velocity, location;
-  Boolean onGround, alive;
+  Boolean isFacingRight, alive;
   
   final int SPEED = 5; //5 ??? per second
   final int CHECKWALLDIST = 20; //will check collision 20 pixels from centre
@@ -8,10 +8,10 @@ class Player{
   // collision sensor
   PVector leftHigh, rightHigh, leftLow, rightLow, top;
     
-  Player(){
+  Player(int startx, int starty){
      velocity = new PVector(0 , 0);
-     location = new PVector(5*25, 5*25); //spawn at grid[5][5]
-     onGround = alive = true;
+     location = new PVector(startx*25-12, starty*25-16); //spawn at grid[5][5]
+     isFacingRight = false; alive = true;
          
      leftHigh = new PVector();
      rightHigh = new PVector();
@@ -19,7 +19,7 @@ class Player{
      rightLow = new PVector();
      top = new PVector();        
   }
-  
+  /*
   void checkonGround(){
       if (!inside[world.tileAt(location).getBlock()].isStandable) {
          onGround = false;
@@ -47,7 +47,7 @@ class Player{
     }
   }
    //going to be in checkcollision
-  
+  */
   void move() {
      location.add(velocity);
   }
@@ -59,12 +59,15 @@ class Player{
        else if (keyboard.holdingRight) {
           velocity.x += SPEED;
        }
-       if (keyboard.holdingUp && onGround) {
+       if (keyboard.holdingUp) {
           velocity.y = -20;
         }
     }
   void draw(){
-    imageMode(CORNER);
+    //imageMode(CORNER);
+    if (!isFacingRight){
+      image(playerIMG,(int)location.x-12,(int)location.y-16);
+    }
     
   }
 }

@@ -33,6 +33,7 @@ void setup(){
   groundIMG=loadImage("ground.png");
   spikeIMG=loadImage("spikes.png");
   stoneIMG=loadImage("stone.png");
+  playerIMG=loadImage("player.png");
   
   size(550, 550);
   frameRate(48);
@@ -40,4 +41,5 @@ void setup(){
 }
 void draw(){
   world.draw();
+  player.draw();
 }
