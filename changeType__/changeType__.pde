@@ -38,8 +38,11 @@ void setup(){
   size(550, 550);
   frameRate(48);
   world = new Environment();
+  keyboard = new Keyboard();
 }
 void draw(){
+  pushMatrix();
   world.draw();
   player.draw();
+  popMatrix();
 }
