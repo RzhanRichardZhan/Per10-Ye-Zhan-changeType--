@@ -9,7 +9,6 @@ class Clouds extends Blocks{
   }
   void inAct(){
     ifStanding();
-    ifCeiling();
 
   }
 }
