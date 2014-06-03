@@ -41,6 +41,8 @@ void setup(){
   keyboard = new Keyboard();
 }
 void draw(){
+  pushMatrix();
   world.draw();
   player.draw();
+  popMatrix();
 }
