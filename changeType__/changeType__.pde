@@ -24,7 +24,43 @@ PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
 
-
+void keyPressed() {
+   switch (key) {
+              println(key);
+              case 'W':
+              case 'w':
+                if(!holdingUp){
+                  holdingUp = false;
+                }else{
+                  holdingUp = true;
+                }
+                break;
+              case 'A':
+              case 'a':
+                if(!holdingDown){
+                  holdingLeft = false;
+                }else{
+                  holdingLeft = true;
+                }
+                break;
+              case 'D':
+              case 'd':
+                if(!holdingRight){
+                  holdingRight = false;
+                }else{
+                  holdingRight = true;
+                }
+                break;
+              case ' ':
+                if(!holdingSpace){
+                  holdingSpace = false;
+                }else{
+                  holdingSpace = true;
+                }
+                break;
+            }
+    }
+    
 void setup(){
   brickIMG=loadImage("brick.png");
   cloudIMG=loadImage("cloud.png");
