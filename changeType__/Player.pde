@@ -1,70 +1,76 @@
 class Player{
   PVector velocity, location;
+  PVector nw, ne, se, sw;
   Boolean isFacingRight, alive;
   
-  final int SPEED = 5; //5 ??? per second
-  final int CHECKWALLDIST = 20; //will check collision 20 pixels from centre
+  final int SPEED = 1; //5 ??? per second
+
     
   // collision sensor
-  PVector leftHigh, rightHigh, leftLow, rightLow, top;
     
   Player(int startx, int starty){
      velocity = new PVector(0 , 0);
      location = new PVector(startx*25-12, starty*25-16); //spawn at grid[5][5]
      isFacingRight = false; alive = true;
-         
-     leftHigh = new PVector();
-     rightHigh = new PVector();
-     leftLow = new PVector();
-     rightLow = new PVector();
-     top = new PVector();        
+     nw = new PVector();
+     ne = new PVector();
+     se = new PVector();
+     sw = new PVector();
+     relocate();
+     println(location.x);
+     println(location.y);
+          
   }
-  /*
-  void checkonGround(){
-      if (!inside[world.tileAt(location).getBlock()].isStandable) {
-         onGround = false;
-      }
-      if (!onGround) {
-            if (inside[world.tileAt(location).getBlock()].isStandable) {
-                onGround = true;
-                location.y = world.topOfSquare(location);
-                velocity.y = 0;
-            } else {
-                velocity.y += SPEED;
-            }
-      }
-  }
-  
-  void checkCollision(){
-  }
-  void checkSpike(){
-    //if (inside[world.tileAt(
-  }
-  void checkCoins(){
-    if (world.tileAt(location).getBlock() == 2){
-      world.tileAt(location).die();
-      score+=100;
-    }
-  }
-   //going to be in checkcollision
-  */
   void move() {
      location.add(velocity);
+     relocate();
+  }
+  void relocate(){
+    
+     nw.x = location.x-12;
+     nw.y = location.y-16;
+     ne.x = location.x+12;
+     ne.y = location.y-16;
+     sw.x = location.x-12;
+     sw.y = location.y+16;
+     se.x = location.x+12;
+     se.y = location.y+16;
   }
   
   void checkKeys() {
-      if (keyboard.holdingLeft) {
+      if (holdingLeft) {
           velocity.x -= SPEED;
        }
-       else if (keyboard.holdingRight) {
+      else if (holdingRight) {
           velocity.x += SPEED;
        }
-       if (keyboard.holdingUp) {
-          velocity.y = -20;
+       
+       else{
+         velocity.x = 0;
+       }
+       if (holdingUp) {
+          velocity.y -= 1;
         }
+        else if (velocity.y >= 0){
+          velocity.y += 1;
+        }
+        
     }
   void draw(){
-    //imageMode(CORNER);
+    
+    checkKeys();
+    //println(world.tileAt(location).getBlock());
+    inside[world.tileAt(location).getBlock()].inAct();
+    //println(world.tileAt(nw).getBlock());
+    inside[world.tileAt(nw).getBlock()].inAct();
+    //println(world.tileAt(ne).getBlock());
+    inside[world.tileAt(ne).getBlock()].inAct();
+    //println(world.tileAt(sw).getBlock());
+    inside[world.tileAt(sw).getBlock()].inAct();
+    //println(world.tileAt(se).getBlock());
+    inside[world.tileAt(se).getBlock()].inAct();
+    
+    move();
     if (!isFacingRight){
       image(playerIMG,(int)location.x-12,(int)location.y-16);
     }

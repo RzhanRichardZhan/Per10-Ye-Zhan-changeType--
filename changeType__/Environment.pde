@@ -16,32 +16,32 @@ class Environment{
     String[] raw = loadStrings(path);
     int at = 0;
     for(int k = 0; k <= 22; k++){
-       for(int j=0; j <= 22; j++){
+       for(int j = 0; j <= 22; j++){
             switch (raw[k].charAt(at)) {
               case 'E':
               default:
-                output[j][k] = new Tile(j,k,0);
+                output[k][j] = new Tile(j,k,0);
                 break;
               case 'B':
-                output[j][k] = new Tile(j,k,1);
+                output[k][j] = new Tile(j,k,1);
                 break;
               case '$':
-                output[j][k] = new Tile(j,k,2);
+                output[k][j] = new Tile(j,k,2);
                 break;
               case 'G':
-                output[j][k] = new Tile(j,k,3);
+                output[k][j] = new Tile(j,k,3);
                 break;
               case 'K':
-                output[j][k] = new Tile(j,k,4);
+                output[k][j] = new Tile(j,k,4);
                 break;
               case 'S':
-                output[j][k] = new Tile(j,k,5);
+                output[k][j] = new Tile(j,k,5);
                 break;
               case 'C':
-                output[j][k] = new Tile(j,k,6);
+                output[k][j] = new Tile(j,k,6);
                 break;
               case 'F':
-                output[j][k] = new Tile(j,k,7);
+                output[k][j] = new Tile(j,k,7);
                 break;         
             }
             at++;
@@ -81,8 +81,10 @@ class Environment{
         int col = (int)(loc.x/25);
         if (row <= 22 && col <= 22)
             return tiles[row][col];
-        else
+        else{
+          println("DEAD");
             return null;
+        }
   }
   Tile tileAt(float x, float y){
     int row = (int)(y/25);
