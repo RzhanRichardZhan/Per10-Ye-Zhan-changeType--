@@ -6,19 +6,22 @@ abstract class Blocks{
   abstract void inAct();
   boolean ifStanding(){
     println("I am trying to work");
-    if ((player.sw.y - world.tileAt(player.sw).ycor-13 < 2 && player.sw.y - world.tileAt(player.sw).ycor-13 >= 0)
-        || (player.se.y - world.tileAt(player.se).ycor-13 < 2 && player.se.y - world.tileAt(player.se).ycor-13 >= 0)){
-          println("I work");
-      player.location.y = world.topOfSquare(player.sw);
-       player.relocate(); 
+    //if(!inside[world.tileAt(player.location.x, player.location.y).sTile().in].isPassable){
+   // if ((player.sw.y - world.tileAt(player.sw).ycor-13 < 2 && player.sw.y - world.tileAt(player.sw).ycor-13 >= 0)
+   //     || (player.se.y - world.tileAt(player.se).ycor-13 < 2 && player.se.y - world.tileAt(player.se).ycor-13 >= 0)){
+   //       println("I work");
+  //    player.location.y = world.topOfSquare(player.sw);
+     //  player.relocate(); 
+     if(!isPassable){
       player.velocity.y = 0;
+      player.location.y = world.topOfSquare(player.location);
       return true;
-    }
+   }
     return false;
   }
   boolean ifWallLeft(){
     if (player.location.x - world.tileAt(player.location).xcor-13 < 3 && player.location.x - world.tileAt(player.location).xcor-13 > 0){
-      player.location.x = world.leftOfSquare(player.location);
+     player.location.x = world.leftOfSquare(player.location);
       player.velocity.x = 0;
       return true;
     }

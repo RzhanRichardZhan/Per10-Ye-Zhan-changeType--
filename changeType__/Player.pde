@@ -3,7 +3,7 @@ class Player{
   PVector nw, ne, se, sw;
   Boolean isFacingRight, alive;
   
-  final int SPEED = 1; //5 ??? per second
+  final int SPEED = 1;
 
     
   // collision sensor
@@ -49,10 +49,14 @@ class Player{
          velocity.x = 0;
        }
        if (holdingUp) {
+         if(velocity.y > 0){
+           return;
+         }
           velocity.y -= 1;
+          holdingUp = false;
         }
         else if (velocity.y >= 0){
-          velocity.y += 1;
+          velocity.y += 0.8;
         }
         
     }

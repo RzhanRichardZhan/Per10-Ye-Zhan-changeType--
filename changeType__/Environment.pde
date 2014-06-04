@@ -79,11 +79,12 @@ class Environment{
   Tile tileAt(PVector loc) {
         int row = (int)(loc.y/25);
         int col = (int)(loc.x/25);
-        if (row <= 22 && col <= 22)
+        if (row < 22)
             return tiles[row][col];
         else{
           println("DEAD");
-            return null;
+          gameOver();
+          return tiles[0][0];
         }
   }
   Tile tileAt(float x, float y){

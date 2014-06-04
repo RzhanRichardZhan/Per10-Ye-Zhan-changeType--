@@ -1,5 +1,4 @@
 //#######################MAIN OBJECTS###########################
-Keyboard keyboard;
 Environment world;
 Player player;
 int score;
@@ -23,6 +22,7 @@ PImage groundIMG;
 PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
+PImage background;
 
 //#######################BOOLEANS#################################
 boolean holdingUp, holdingRight, holdingLeft, holdingSpace;
@@ -92,12 +92,18 @@ void setup(){
   spikeIMG=loadImage("spikes.png");
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
+  background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=holdingSpace=false;
   size(550, 550);
   frameRate(48);
   world = new Environment();
 }
+
+void gameOver(){
+  world.loadLevel("test.txt");
+}
 void draw(){
+  background(background);
   pushMatrix();
   world.draw();
   player.draw();
