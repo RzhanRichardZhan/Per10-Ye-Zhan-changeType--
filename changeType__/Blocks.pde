@@ -5,8 +5,12 @@ abstract class Blocks{
   abstract PImage outAct();
   abstract void inAct();
   boolean ifStanding(){
-    if (player.location.y - world.tileAt(player.location).ycor-13 < 3 && player.location.y - world.tileAt(player.location).ycor-13 > 0){
-      player.location.y = world.topOfSquare(player.location); 
+    println("I am trying to work");
+    if ((player.sw.y - world.tileAt(player.sw).ycor-13 < 2 && player.sw.y - world.tileAt(player.sw).ycor-13 >= 0)
+        || (player.se.y - world.tileAt(player.se).ycor-13 < 2 && player.se.y - world.tileAt(player.se).ycor-13 >= 0)){
+          println("I work");
+      player.location.y = world.topOfSquare(player.sw);
+       player.relocate(); 
       player.velocity.y = 0;
       return true;
     }

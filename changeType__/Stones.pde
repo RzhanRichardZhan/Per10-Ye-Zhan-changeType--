@@ -9,8 +9,8 @@ class Stones extends Blocks{
   }
   void inAct(){ 
     ifStanding();
-    ifWallLeft();
-    ifWallRight();
-    ifCeiling();
+    //ifWallLeft();
+    //ifWallRight();
+    //ifCeiling();
   }
 }
