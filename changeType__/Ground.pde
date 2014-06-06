@@ -9,8 +9,8 @@ class Ground extends Blocks{
   }
   void inAct(){
     ifStanding();
-    ifWallLeft();
-    ifWallRight();
-    ifCeiling();
+    //ifWallLeft();
+    //ifWallRight();
+    //ifCeiling();
   }
 }

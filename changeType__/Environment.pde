@@ -11,7 +11,7 @@ class Environment{
     tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
-    player = new Player(3,13);
+    player = new Player(2,13);//base 0
     Tile[][] output = new Tile[23][23];
     String[] raw = loadStrings(path);
     int at = 0;
@@ -53,8 +53,8 @@ class Environment{
   
   float topOfSquare(PVector thisPosition) {
         int thisY = int(thisPosition.y);
-        thisY /= 25;
-        return float(thisY*25);
+        thisY = (thisY/25)+1;
+        return float(thisY*25)-13;
     }
 
   float bottomOfSquare(PVector thisPosition) {

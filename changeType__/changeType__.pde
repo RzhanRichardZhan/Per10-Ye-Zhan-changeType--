@@ -100,7 +100,7 @@ void setup(){
 }
 
 void gameOver(){
-  world.loadLevel("test.txt");
+  //world.loadLevel("test.txt");
 }
 void draw(){
   background(background);

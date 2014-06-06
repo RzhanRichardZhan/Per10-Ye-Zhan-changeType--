@@ -5,17 +5,18 @@ abstract class Blocks{
   abstract PImage outAct();
   abstract void inAct();
   boolean ifStanding(){
-    println("I am trying to work");
-    //if(!inside[world.tileAt(player.location.x, player.location.y).sTile().in].isPassable){
-   // if ((player.sw.y - world.tileAt(player.sw).ycor-13 < 2 && player.sw.y - world.tileAt(player.sw).ycor-13 >= 0)
-   //     || (player.se.y - world.tileAt(player.se).ycor-13 < 2 && player.se.y - world.tileAt(player.se).ycor-13 >= 0)){
-   //       println("I work");
-  //    player.location.y = world.topOfSquare(player.sw);
-     //  player.relocate(); 
-     if(!isStandable){
+    if ((player.sw.y - (world.tileAt(player.sw).ycor-13) < 2 && player.sw.y - (world.tileAt(player.sw).ycor-13) >= 0)
+   || (player.se.y - (world.tileAt(player.se).ycor-13) < 2 && player.se.y - (world.tileAt(player.se).ycor-13) >= 0)){
+          
+      player.location.y = world.tileAt(player.location).ycor-3;
+ //(13*25)-13;
+      player.relocate(); 
+     //if(!isStandable){
       player.velocity.y = 0;
-      player.location.y = world.topOfSquare(player.location);
-      return true;
+      //player.location.y = world.topOfSquare(player.location);
+      //return true;
+   //}
+   return true;
    }
     return false;
   }
