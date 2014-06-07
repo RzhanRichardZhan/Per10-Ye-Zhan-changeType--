@@ -3,8 +3,9 @@ abstract class Blocks{
   PImage path;
   boolean isStandable, isPassable;
   abstract PImage outAct();
-  abstract void inAct();
-  boolean ifStanding(){
+  abstract void inAct(int i);
+  boolean ifStanding(int i){
+    if (i == 3 || i == 4){
      if ((player.sw.y > (world.tileAt(player.sw).ycor-13))
    && (player.osw.y <= (world.tileAt(player.sw).ycor-13)) ){
      badRelocate= true;
@@ -14,43 +15,52 @@ abstract class Blocks{
       player.velocity.y = 0;
    return true;
    }
+    }
     return false;
   }
-  boolean ifWallLeft(){//the wall's left, not the player's
-  println("Center "+player.location.y);
-  //println("Top "+ (int)(world.tileAt(player.e).ycor-13));
- // println("Bottom "+ (int)(world.tileAt(player.e).ycor+13));
-  println();
+  boolean ifWallLeft(int i){//the wall's left, not the player's
+  if (i == 5){
      if ((player.se.x > world.tileAt(player.se).xcor-13)
-     && (player.se.x <= world.tileAt(player.se).xcor-13)
-     //&& (player.location.y > world.tileAt(player.e).ycor-13)
-    // && (player.location.y < world.tileAt(player.e).ycor+13)
-     ){
-       println("I work");
-     
-          
+     && (player.ose.x <= world.tileAt(player.se).xcor-13)
+     && (player.location.y > (world.tileAt(player.location.x+13,player.location.y).ycor-13))
+     && (player.location.y < (world.tileAt(player.location.x+13,player.location.y).ycor+13))
+     ){   
       player.location.x = world.tileAt(player.location).xcor-2;
       badRelocate = true;
       player.relocate(); 
       badRelocate = true;
-      player.velocity.x = 0;
    return true;
+     }
    }
     return false;
   }
-  boolean ifWallRight(){
-    if (!isPassable){
-      player.location.x = world.rightOfSquare(player.location);
-      player.velocity.x = 0;
-      return true;
-    }
+  boolean ifWallRight(int i){
+    if (i == 7){
+     if ((player.sw.x < world.tileAt(player.sw).xcor+13)
+     && (player.osw.x >= world.tileAt(player.sw).xcor+13)
+     && (player.location.y > (world.tileAt(player.location.x-13,player.location.y).ycor-13))
+     && (player.location.y < (world.tileAt(player.location.x-13,player.location.y).ycor+13))
+     ){   
+      player.location.x = world.tileAt(player.location).xcor+2;
+      badRelocate = true;
+      player.relocate(); 
+      badRelocate = true;
+   return true;
+     }
+   }
     return false;
   }
-  boolean ifCeiling(){
-    if (!isPassable){
-      player.location.y = world.bottomOfSquare(player.location);
+  boolean ifCeiling(int i){
+    if (i == 1 || i == 2){
+    if ((player.nw.y < (world.tileAt(player.nw).ycor+13))
+   && (player.onw.y >= (world.tileAt(player.nw).ycor+13)) ){
+     badRelocate= true;
+      player.location.y = world.tileAt(player.location).ycor+3;
+      player.relocate(); 
+      badRelocate = true;;
       player.velocity.y = 0;
-      return true;
+   return true;
+   }
     }
     return false;
   }

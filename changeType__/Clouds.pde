@@ -7,8 +7,8 @@ class Clouds extends Blocks{
   PImage outAct(){
     return cloudIMG;//placeholder
   }
-  void inAct(){
-    ifStanding();
+  void inAct(int i){
+    ifStanding(i);
 
   }
 }

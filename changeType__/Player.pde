@@ -81,17 +81,19 @@ class Player{
     //println("Before move " + location.y);
     move();
     //println(world.tileAt(location).getBlock());
-    inside[world.tileAt(location).getBlock()].inAct();
+    //inside[world.tileAt(location).getBlock()].inAct();
     //println(world.tileAt(nw).getBlock());
-    inside[world.tileAt(nw).getBlock()].inAct();
+    inside[world.tileAt(nw).getBlock()].inAct(2);
     //println(world.tileAt(ne).getBlock());
-    inside[world.tileAt(ne).getBlock()].inAct();
+    inside[world.tileAt(ne).getBlock()].inAct(1);
     //println(world.tileAt(sw).getBlock());
     //println("After move: " + location.y);
-    inside[world.tileAt(sw).getBlock()].inAct();
+    inside[world.tileAt(location.x-13,location.y).getBlock()].inAct(7);
+    inside[world.tileAt(sw).getBlock()].inAct(3);
     //println("After first check "+ location.y);
     //println(world.tileAt(se).getBlock());
-    inside[world.tileAt(se).getBlock()].inAct();
+    inside[world.tileAt(location.x+13,location.y).getBlock()].inAct(5);
+    inside[world.tileAt(se).getBlock()].inAct(4);
     //println("After second check "+ location.y);
     //move();
     if (!isFacingRight){

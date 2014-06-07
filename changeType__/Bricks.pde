@@ -7,11 +7,11 @@ class Bricks extends Blocks{
   PImage outAct() {
     return brickIMG;//placeholder
   }
-  void inAct() {
-    ifStanding();
-    ifWallLeft();
-    ifWallRight();
-    if (ifCeiling()){
+  void inAct(int i) {
+    ifStanding(i);
+    ifWallLeft(i);
+    ifWallRight(i);
+    if (ifCeiling(i)){
       world.tileAt(player.location).nTile().die();
     }
   }

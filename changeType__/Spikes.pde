@@ -7,7 +7,7 @@ class Spikes extends Blocks{
   PImage outAct(){
     return spikeIMG;//placeholder
   }
-  void inAct(){
+  void inAct(int i){
     println("oh no, you esploded");//placeholder
     
   }

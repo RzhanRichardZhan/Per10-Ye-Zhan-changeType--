@@ -7,10 +7,11 @@ class Stones extends Blocks{
   PImage outAct(){
     return stoneIMG;//placeholder
   }
-  void inAct(){ 
-    ifStanding();
-    //ifWallLeft();
-    //ifWallRight();
-    //ifCeiling();
+  void inAct(int i){ 
+    ifStanding(i);
+    ifCeiling(i);
+    
+    ifWallLeft(i);
+    ifWallRight(i);
   }
 }

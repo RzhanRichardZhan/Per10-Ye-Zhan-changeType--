@@ -7,7 +7,7 @@ class Finish extends Blocks{
   PImage outAct(){
     return finishIMG;//placeholder
   }
-  void inAct(){
+  void inAct(int i){
     println("CONGRATS");//placeholder
   }
 }

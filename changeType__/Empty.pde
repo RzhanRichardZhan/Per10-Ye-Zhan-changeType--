@@ -8,6 +8,6 @@ class Empty extends Blocks{
    PImage outAct(){
     return null;//placeholder
   }
-  void inAct(){
+  void inAct(int i){
     return; }
 }

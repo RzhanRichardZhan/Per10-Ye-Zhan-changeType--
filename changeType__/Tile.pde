@@ -23,9 +23,6 @@ class Tile{
     out = 0;
     in = 0;
   }
-  void act(){
-    inside[in].inAct();
-  }
   int getBlock(){
     return out;
   }
