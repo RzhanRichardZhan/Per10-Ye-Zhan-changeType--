@@ -38,6 +38,10 @@ void keyPressed() {
    switch (key) {
               case 'W':
               case 'w':
+                 if(player.velocity.y < 0 || (world.tileAt(player.sw).getBlock() == 0 && player.velocity.y == 0)){
+                                     holdingUp = false;
+                                     return;
+              }
                   holdingUp = true;
                 
                   break;

@@ -1,5 +1,5 @@
 class Player{
-  PVector velocity, location;
+  PVector velocity, location, prevelo;
   PVector nw, ne, se, sw;
   PVector onw, one, ose, osw;
   Boolean isFacingRight, alive;
@@ -12,6 +12,7 @@ class Player{
     
   Player(int startx, int starty){
      velocity = new PVector(0 , 0);
+     prevelo = new PVector();
      location = new PVector(startx*25+12, starty*25-16); //spawn at grid[5][5]
      isFacingRight = false; alive = true;
      nw = new PVector();
@@ -67,16 +68,16 @@ class Player{
          velocity.x = 0;
        }
        if (holdingUp) {
-         if(velocity.y == 0 && (world.tileAt(sw).getBlock() != 0 ||
-         world.tileAt(se).getBlock() != 0)){
-          velocity.y = -9;
+        if(prevelo.y == 0){
+          velocity.y = -7;
           holdingUp = false;
-         }
+        }
+           prevelo.y = velocity.y;
        }
-        else if (velocity.y < MAXSPEED){
+        if (velocity.y < MAXSPEED){
           velocity.y += 0.5;
         }
-        
+       
     }
   void draw(){
     
