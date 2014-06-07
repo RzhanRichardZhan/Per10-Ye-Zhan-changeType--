@@ -54,10 +54,12 @@ class Player{
   }
   
   void checkKeys() {
-      if (holdingLeft) {
+      if (holdingLeft && location.x > 13) {
+          isFacingRight=false;
           velocity.x = -4;
        }
-      else if (holdingRight) {
+      else if (holdingRight && location.x < 537) {
+        isFacingRight=true;
           velocity.x = 4;
        }
        
@@ -79,29 +81,20 @@ class Player{
   void draw(){
     
     checkKeys();
-    //println("Before move " + location.y);
+    println(isFacingRight);
     move();
-    //println(world.tileAt(location).getBlock());
-    //inside[world.tileAt(location).getBlock()].inAct(5);
-    //println(world.tileAt(nw).getBlock());
+    inside[world.tileAt(location).getBlock()].inAct(5);
     inside[world.tileAt(nw).getBlock()].inAct(2);
-    //println(world.tileAt(ne).getBlock());
     inside[world.tileAt(ne).getBlock()].inAct(1);
-    //println(world.tileAt(sw).getBlock());
-    //println("After move: " + location.y);
     inside[world.tileAt(location.x-12,location.y+13).getBlock()].inAct(9);
     inside[world.tileAt(location.x-12,location.y-13).getBlock()].inAct(8);
     inside[world.tileAt(sw).getBlock()].inAct(3);
-    //println("After first check "+ location.y);
-    //println(world.tileAt(se).getBlock());
     inside[world.tileAt(location.x+12,location.y-13).getBlock()].inAct(5);
     inside[world.tileAt(location.x+12,location.y+13).getBlock()].inAct(12);
     inside[world.tileAt(se).getBlock()].inAct(4);
-    //println("After second check "+ location.y);
-    //move();
-    if (!isFacingRight){
+    //if (!isFacingRight){
       image(playerIMG,(int)location.x-12,(int)location.y-16);
-    }
+    //}
     
   }
 }

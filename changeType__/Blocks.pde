@@ -36,12 +36,6 @@ abstract class Blocks{
   }
   boolean ifWallRight(int i){
     if (i == 8 || i ==9){
-      glob+=1;
-      //println(badRelocate + " " + glob);
-      //println("player "+(int)player.osw.x);
-      //println("tile :"+(int)(world.tileAt(player.sw).xcor+13));
-      println(player.osw.x);
-      println(player.osw.x >= world.tileAt(player.location).xcor-13);
      if ((player.sw.x < world.tileAt(player.sw).xcor+13)
      && (player.osw.x >= world.tileAt(player.location).xcor-26)
      && (player.location.y > (world.tileAt(player.location.x-13,player.location.y).ycor-13))

@@ -3,6 +3,7 @@ Environment world;
 Player player;
 int score;
 boolean badRelocate;
+Gun gun;
 int glob=0;
 
 
@@ -99,6 +100,7 @@ void setup(){
   background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=holdingSpace=false;
   badRelocate=false;
+  gun = new Gun();
   size(550, 550);
   frameRate(48);
   world = new Environment();
@@ -112,5 +114,6 @@ void draw(){
   pushMatrix();
   world.draw();
   player.draw();
+  gun.draw();
   popMatrix();
 }

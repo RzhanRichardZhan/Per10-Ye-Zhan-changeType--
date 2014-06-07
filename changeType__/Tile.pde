@@ -13,6 +13,7 @@ class Tile{
     xcor = (x*25)+13;
     ycor = (y*25)+13;
     out = z;
+    in = z;
   }
   void draw(){
     if (inside[out].outAct() != null){
@@ -24,7 +25,7 @@ class Tile{
     in = 0;
   }
   int getBlock(){
-    return out;
+    return in;
   }
   Tile nTile() {
         if (ycor != 0)
