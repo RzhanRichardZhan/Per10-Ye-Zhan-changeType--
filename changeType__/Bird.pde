@@ -30,41 +30,98 @@ class Bird extends Blocks{
   PImage outAct(){
     return birdIMG;
   }
-  void act(int i){
-    if (birdIn == 8){
-      if ((player.sw.y > location.y-13)
+  boolean top(){
+    return ((player.sw.y > location.y-13)
    && (player.osw.y <= location.y-13)
    && (((player.sw.x > location.x-13)
    && (player.sw.x < location.x+13))
    || ((player.se.x > location.x-13)
    && (player.se.x < location.x+13)))
    
+    );
+  }
+  boolean left(){
+    return ((player.se.x > location.x-13)
+     && (player.ose.x <= location.x+26)
+     && (player.location.y > (location.y-13))
+     && (player.location.y < (location.y+13))
+     );
+  }
+  boolean right(){
+    return ((player.se.x < location.x-13)
+     && (player.ose.x >= location.x+26)
+     && (player.location.y > (location.y-13))
+     && (player.location.y < (location.y+13))
+     );
+  }
+  boolean bottom(){
+    return ((player.sw.y < location.y+13)
+   && (player.osw.y >= location.y+13)
+   && (((player.sw.x > location.x-13)
+   && (player.sw.x < location.x+13))
+   || ((player.se.x > location.x-13)
+   && (player.se.x < location.x+13)))
+   
+    );
+  }
+  void act(int i){
+    if (birdIn == 8){
+      if (top()
+   
     ){
      println("O");
      badRelocate= true;
-      player.location.y = world.tileAt(player.location).ycor-3;
+      player.location.y = location.y-33;
       player.relocate(); 
       badRelocate = true;
       player.velocity.y = -5;
       life = false;
     }
-    else if ((player.se.x > location.x-13)
-     && (player.ose.x <= location.x+26)
-     && (player.location.y > (location.y-13))
-     && (player.location.y < (location.y+13))
-     ){
-       gameOver();
-     }
-     else if ((player.se.x < location.x-13)
-     && (player.ose.x >= location.x+26)
-     && (player.location.y > (location.y-13))
-     && (player.location.y < (location.y+13))
-     ){
-       gameOver();
-     }
+    else if (left() || right() || bottom()){
+      gameOver();
     }
-    else{
-      inside[birdIn].inAct(i);
+    }
+    else if (birdIn == 7){
+      if (top() || left() || right() || bottom()){
+      }
+    }
+    else if (birdIn == 6){
+      if (top()){
+        badRelocate=true;
+        player.location.y = location.y-33;
+        player.location.add(velocity);
+        player.relocate();
+        badRelocate=true;
+      }
+    }
+    else if (birdIn == 5 || birdIn == 3){
+      if (top()){
+        badRelocate=true;
+        player.location.y = location.y-36;
+        player.location.add(velocity);
+        player.relocate();
+        badRelocate=true;
+      }
+      
+      else if (bottom()){
+        badRelocate = true;
+        player.location.y = location.y+36;
+        player.relocate();
+        player.velocity.y=0;
+        badRelocate=true;
+      }
+      else if (left()){
+        badRelocate = true;
+        player.location.x = location.x-30.5;
+        player.relocate();
+        badRelocate = true;
+      }
+      else if (right()){
+        badRelocate = true;
+        player.location.x = location.x+30.5;
+        player.relocate();
+        badRelocate = true;
+      }
     }
   }
   void inAct(int i){//for swapping
@@ -78,7 +135,9 @@ class Bird extends Blocks{
     }
   }
   void draw(){
+    
     if (life){
+      player.onEnemy=top();
       act(3);
       location.add(velocity);
       if (steps >= path){
@@ -87,7 +146,12 @@ class Bird extends Blocks{
         velocity.y = -velocity.y;
       }
       steps++;
-      image(birdIMG,location.x-18.5, location.y-17);
+      if (birdIn == 8){
+        image(inside[birdIn].outAct(),location.x-18.5, location.y-17);
+      }
+      else {
+        image(inside[birdIn].outAct(),location.x-13,location.y-13);
+      }
     }
   }
     

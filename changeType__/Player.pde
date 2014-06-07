@@ -2,7 +2,7 @@ class Player{
   PVector velocity, location, prevelo;
   PVector nw, ne, se, sw;
   PVector onw, one, ose, osw;
-  Boolean isFacingRight, alive;
+  Boolean isFacingRight, alive, onEnemy;
   
   final int SPEED = 1;
   final int MAXSPEED = 8;
@@ -24,6 +24,7 @@ class Player{
      ose = new PVector();
      osw = new PVector();
      relocate();
+     onEnemy = false;
           
   }
   void move() {

@@ -39,7 +39,8 @@ void keyPressed() {
    switch (key) {
               case 'W':
               case 'w':
-                 if(player.velocity.y < 0 || ((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0) && player.velocity.y == 0)){
+              println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && !player.onEnemy);
+                 if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)&& !player.onEnemy) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
               }
@@ -106,7 +107,7 @@ void setup(){
   badRelocate=false;
   gun = new Gun();
   Enemies = new ArrayList<Bird>();
-  birdIn=8;
+  birdIn=3;
   size(550, 550);
   frameRate(48);
   world = new Environment();
