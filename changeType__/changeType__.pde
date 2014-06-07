@@ -2,9 +2,10 @@
 Environment world;
 Player player;
 int score;
-boolean badRelocate, secondspace;
+boolean badRelocate, secondspace, inlvl;
 Gun gun;
 int glob=0;
+String path = "FFFFFFFF";
 
 
 //#######################TILES#####################################
@@ -69,6 +70,12 @@ void keyPressed() {
                   secondspace = true;     
                 }        
                 break;
+              case 'R':
+              case 'r':
+                 if(inlvl){
+                   gameOver();
+                 }
+                 break;
             }
 }
 void keyReleased(){ 
@@ -89,6 +96,12 @@ void keyReleased(){
             }
 }
   
+void fileSelected(File selection) {
+    if (selection == null) {
+} else {
+    path = selection.getAbsolutePath();
+    }
+}
     
 void setup(){
   brickIMG=loadImage("brick.png");
@@ -101,6 +114,7 @@ void setup(){
   playerIMG=loadImage("player.png");
   background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=false;
+  inlvl=false;
   badRelocate=false;
   gun = new Gun();
   size(550, 550);
@@ -110,11 +124,19 @@ void setup(){
 
 void gameOver(){
   gun.one = gun.two = -1;
-  world.loadLevel("test.txt");
+  world.tiles = world.loadLevel(path);
 }
+
 void draw(){
-  background(background);
   pushMatrix();
+  if(!inlvl){
+    selectInput("Choose a level!", "fileSelected");
+    while(path.equals("FFFFFFFF")){
+    }
+    inlvl = true;
+    world.tiles = world.loadLevel(path);
+  }
+  background(background);
   world.draw();
   player.draw();
   gun.draw();
