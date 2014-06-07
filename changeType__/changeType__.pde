@@ -2,10 +2,9 @@
 Environment world;
 Player player;
 int score;
-boolean badRelocate, secondspace, inlvl;
+boolean badRelocate, secondspace;
 Gun gun;
 int glob=0;
-String path = "FFFFFFFF";
 
 
 //#######################TILES#####################################
@@ -16,7 +15,7 @@ int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
 Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish()};
-ArrayList<Integer> stand;
+ArrayList<Bird> Enemies;
 
 
 //#######################SPRITES############################
@@ -29,6 +28,7 @@ PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
 PImage background;
+PImage birdIMG;
 
 //#######################BOOLEANS#################################
 boolean holdingUp, holdingRight, holdingLeft;
@@ -39,7 +39,7 @@ void keyPressed() {
    switch (key) {
               case 'W':
               case 'w':
-                 if(player.velocity.y < 0 || (world.tileAt(player.sw).getBlock() == 0 && player.velocity.y == 0)){
+                 if(player.velocity.y < 0 || ((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
               }
@@ -70,12 +70,6 @@ void keyPressed() {
                   secondspace = true;     
                 }        
                 break;
-              case 'R':
-              case 'r':
-                 if(inlvl){
-                   gameOver();
-                 }
-                 break;
             }
 }
 void keyReleased(){ 
@@ -96,12 +90,6 @@ void keyReleased(){
             }
 }
   
-void fileSelected(File selection) {
-    if (selection == null) {
-} else {
-    path = selection.getAbsolutePath();
-    }
-}
     
 void setup(){
   brickIMG=loadImage("brick.png");
@@ -113,10 +101,11 @@ void setup(){
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
   background=loadImage("background.png");
+  birdIMG=loadImage("bird.png");
   holdingUp=holdingRight=holdingLeft=false;
-  inlvl=false;
   badRelocate=false;
   gun = new Gun();
+  Enemies = new ArrayList<Bird>();
   size(550, 550);
   frameRate(48);
   world = new Environment();
@@ -124,21 +113,16 @@ void setup(){
 
 void gameOver(){
   gun.one = gun.two = -1;
-  world.tiles = world.loadLevel(path);
+  world.loadLevel("test.txt");
 }
-
 void draw(){
-  pushMatrix();
-  if(!inlvl){
-    selectInput("Choose a level!", "fileSelected");
-    while(path.equals("FFFFFFFF")){
-    }
-    inlvl = true;
-    world.tiles = world.loadLevel(path);
-  }
   background(background);
+  pushMatrix();
   world.draw();
   player.draw();
   gun.draw();
+  for (Bird b : Enemies){
+    b.draw();
+  }
   popMatrix();
 }

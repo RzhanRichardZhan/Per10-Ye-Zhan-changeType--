@@ -8,7 +8,7 @@ class Environment{
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
     } */
-    //tiles = loadLevel(path);
+    tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
     player = new Player(2,13);//base 0
@@ -48,6 +48,7 @@ class Environment{
         }
         at = 0;
       }
+      Enemies.add(new Bird(200,90,8*25,12*25));
       return output;
   }
   
