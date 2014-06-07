@@ -34,10 +34,9 @@ class Tile{
   int getBlock(){
     if(gun.one == in && gun.two != -1){
       return gun.two;
-    } else if (gun.two == in)
+    } else if (gun.two == in){
       return gun.one;
-    else return in;
-  }
+  }  else return in; }
   Tile nTile() {
         if (ycor != 0)
             return world.tiles[ycor - 1][xcor];

@@ -1,11 +1,14 @@
+import ddf.minim.*;
+
 //#######################MAIN OBJECTS###########################
 Environment world;
 Player player;
 int score;
 boolean badRelocate, secondspace, inlvl;
 Gun gun;
-int glob=0;
 String path = "FFFFFFFF";
+Minim minim;
+AudioPlayer main, fx;
 
 
 //#######################TILES#####################################
@@ -15,8 +18,9 @@ int CoinsIn = 2;
 int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
-Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish()};
-ArrayList<Integer> stand;
+int birdIn= 8;
+Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird()};
+ArrayList<Bird> enemies;
 
 
 //#######################SPRITES############################
@@ -28,6 +32,7 @@ PImage groundIMG;
 PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
+PImage birdIMG;
 PImage background;
 
 //#######################BOOLEANS#################################
@@ -39,7 +44,8 @@ void keyPressed() {
    switch (key) {
               case 'W':
               case 'w':
-                 if(player.velocity.y < 0 || (world.tileAt(player.sw).getBlock() == 0 && player.velocity.y == 0)){
+                println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && !player.onEnemy);
+               if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)&& !player.onEnemy) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
               }
@@ -76,6 +82,9 @@ void keyPressed() {
                    gameOver();
                  }
                  break;
+              case '-':
+                  inlvl = false;
+              break;
             }
 }
 void keyReleased(){ 
@@ -104,6 +113,7 @@ void fileSelected(File selection) {
 }
     
 void setup(){
+  minim = new Minim(this);
   brickIMG=loadImage("brick.png");
   cloudIMG=loadImage("cloud.png");
   coinIMG=loadImage("coin.png");
@@ -112,22 +122,28 @@ void setup(){
   spikeIMG=loadImage("spikes.png");
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
+  birdIMG=loadImage("bird.png");
   background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=false;
   inlvl=false;
   badRelocate=false;
   gun = new Gun();
+  enemies = new ArrayList<Bird>();
   size(550, 550);
   frameRate(48);
   world = new Environment();
+  main = minim.loadFile("bgm.mp3", 2048);
+  main.loop(0);
 }
 
 void gameOver(){
   gun.one = gun.two = -1;
+  enemies = new ArrayList<Bird>();
   world.tiles = world.loadLevel(path);
 }
 
 void draw(){
+  background(background);
   pushMatrix();
   if(!inlvl){
     selectInput("Choose a level!", "fileSelected");
@@ -136,8 +152,15 @@ void draw(){
     inlvl = true;
     world.tiles = world.loadLevel(path);
   }
-  background(background);
   world.draw();
+  try{
+      for (Bird b : enemies){
+        b.draw();
+      }
+    }
+    catch(Exception e){
+      gameOver();
+    }
   player.draw();
   gun.draw();
   popMatrix();

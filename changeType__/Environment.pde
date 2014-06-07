@@ -48,6 +48,7 @@ class Environment{
         }
         at = 0;
       }
+       enemies.add(new Bird(200,90,8*25,12*25));
       return output;
   }
   

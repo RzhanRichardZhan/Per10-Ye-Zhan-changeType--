@@ -2,7 +2,7 @@ class Player{
   PVector velocity, location, prevelo;
   PVector nw, ne, se, sw;
   PVector onw, one, ose, osw;
-  Boolean isFacingRight, alive;
+  Boolean isFacingRight, alive, onEnemy;
   
   final int SPEED = 1;
   final int MAXSPEED = 8;
@@ -24,7 +24,7 @@ class Player{
      ose = new PVector();
      osw = new PVector();
      relocate();
-          
+      onEnemy = false;     
   }
   void move() {
     //relocate();
@@ -69,7 +69,7 @@ class Player{
        }
        if (holdingUp) {
         if(prevelo.y == 0){
-          velocity.y = -7;
+          velocity.y = -10;
           holdingUp = false;
         }
            prevelo.y = velocity.y;
@@ -82,7 +82,6 @@ class Player{
   void draw(){
     
     checkKeys();
-    println(isFacingRight);
     move();
       inside[world.tileAt(location).getBlock()].inAct(5);
       inside[world.tileAt(nw).getBlock()].inAct(2);
