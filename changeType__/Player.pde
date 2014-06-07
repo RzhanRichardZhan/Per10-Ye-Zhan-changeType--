@@ -69,7 +69,7 @@ class Player{
        }
        if (holdingUp) {
         if(prevelo.y == 0){
-          velocity.y = -7;
+          velocity.y = -10;
           holdingUp = false;
         }
            prevelo.y = velocity.y;
@@ -82,7 +82,6 @@ class Player{
   void draw(){
     
     checkKeys();
-    println(isFacingRight);
     move();
       inside[world.tileAt(location).getBlock()].inAct(5);
       inside[world.tileAt(nw).getBlock()].inAct(2);

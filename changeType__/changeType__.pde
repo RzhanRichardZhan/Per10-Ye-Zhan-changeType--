@@ -4,7 +4,7 @@ Player player;
 int score;
 boolean badRelocate, secondspace;
 Gun gun;
-int glob=0;
+int birdIn;
 
 
 //#######################TILES#####################################
@@ -14,7 +14,7 @@ int CoinsIn = 2;
 int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
-Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish()};
+Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird()};
 ArrayList<Bird> Enemies;
 
 
@@ -106,6 +106,7 @@ void setup(){
   badRelocate=false;
   gun = new Gun();
   Enemies = new ArrayList<Bird>();
+  birdIn=8;
   size(550, 550);
   frameRate(48);
   world = new Environment();
@@ -121,8 +122,13 @@ void draw(){
   world.draw();
   player.draw();
   gun.draw();
-  for (Bird b : Enemies){
-    b.draw();
+  try{
+    for (Bird b : Enemies){
+      b.draw();
+    }
+  }
+  catch(Exception e){
+    gameOver();
   }
   popMatrix();
 }
