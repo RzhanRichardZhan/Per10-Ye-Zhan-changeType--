@@ -44,9 +44,9 @@ class Player{
     osw.x=sw.x;
     }
      nw.x = location.x-12;
-     nw.y = location.y-16;
+     nw.y = location.y-12;
      ne.x = location.x+12;
-     ne.y = location.y-16;
+     ne.y = location.y-12;
      sw.x = location.x-12;
      sw.y = location.y+16;
      se.x = location.x+12;
@@ -69,7 +69,7 @@ class Player{
        }
        if (holdingUp) {
         if(prevelo.y == 0){
-          velocity.y = -10;
+          velocity.y = -7;
           holdingUp = false;
         }
            prevelo.y = velocity.y;

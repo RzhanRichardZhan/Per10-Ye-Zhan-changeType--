@@ -6,8 +6,8 @@ abstract class Blocks{
   abstract void inAct(int i);
   boolean ifStanding(int i){
     if (i == 3 || i == 4){
-     if ((player.sw.y > (world.tileAt(player.sw).ycor-13))
-   && (player.osw.y <= (world.tileAt(player.sw).ycor-13)) ){
+     if ((player.sw.y > (world.tileAt(player.sw).ycor-12))
+   && (player.osw.y <= (world.tileAt(player.sw).ycor-12)) ){
      badRelocate= true;
       player.location.y = world.tileAt(player.location).ycor-3;
       player.relocate(); 
@@ -20,10 +20,10 @@ abstract class Blocks{
   }
   boolean ifWallLeft(int i){//the wall's left, not the player's
   if (i == 5 || i == 12){
-     if ((player.se.x > world.tileAt(player.se).xcor-13)
-     && (player.ose.x <= world.tileAt(player.location).xcor+26)
-     && (player.location.y > (world.tileAt(player.location.x+13,player.location.y).ycor-13))
-     && (player.location.y < (world.tileAt(player.location.x+13,player.location.y).ycor+13))
+     if ((player.se.x > world.tileAt(player.se).xcor-12)
+     && (player.ose.x <= world.tileAt(player.location).xcor+24)
+     && (player.location.y > (world.tileAt(player.location.x+12,player.location.y).ycor-12))
+     && (player.location.y < (world.tileAt(player.location.x+12,player.location.y).ycor+12))
      ){   
       player.location.x -= 4;
       badRelocate = true;
@@ -36,10 +36,10 @@ abstract class Blocks{
   }
   boolean ifWallRight(int i){
     if (i == 8 || i ==9){
-     if ((player.sw.x < world.tileAt(player.sw).xcor+13)
-     && (player.osw.x >= world.tileAt(player.location).xcor-26)
-     && (player.location.y > (world.tileAt(player.location.x-13,player.location.y).ycor-13))
-     && (player.location.y < (world.tileAt(player.location.x-13,player.location.y).ycor+13))
+     if ((player.sw.x < world.tileAt(player.sw).xcor+12)
+     && (player.osw.x >= world.tileAt(player.location).xcor-24)
+     && (player.location.y > (world.tileAt(player.location.x-12,player.location.y).ycor-12))
+     && (player.location.y < (world.tileAt(player.location.x-12,player.location.y).ycor+12))
      ){   
       player.location.x += 4;
       badRelocate = true;
@@ -52,10 +52,10 @@ abstract class Blocks{
   }
   boolean ifCeiling(int i){
     if (i == 1 || i == 2){
-    if ((player.nw.y < (world.tileAt(player.nw).ycor+13))
-   && (player.onw.y >= (world.tileAt(player.nw).ycor+13)) ){
+    if ((player.nw.y < (world.tileAt(player.nw).ycor+12))
+   && (player.onw.y >= (world.tileAt(player.nw).ycor+12)) ){
      badRelocate= true;
-      player.location.y = world.tileAt(player.location).ycor+3;
+      player.location.y = world.tileAt(player.location).ycor+2;
       player.relocate(); 
       badRelocate = true;
       player.velocity.y = 0;
