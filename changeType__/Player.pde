@@ -32,14 +32,15 @@ class Player{
   }
   void relocate(){
     if (!badRelocate){
-    onw.x=nw.x;
-    one.x=ne.x;
-    ose.x=se.x;
-    osw.x=sw.x;
     onw.y=nw.y;
     one.y=ne.y;
     ose.y=se.y;
     osw.y=sw.y;
+    
+    onw.x=nw.x;
+    one.x=ne.x;
+    ose.x=se.x;
+    osw.x=sw.x;
     }
      nw.x = location.x-12;
      nw.y = location.y-16;
@@ -54,10 +55,10 @@ class Player{
   
   void checkKeys() {
       if (holdingLeft) {
-          velocity.x = -5;
+          velocity.x = -4;
        }
       else if (holdingRight) {
-          velocity.x = 5;
+          velocity.x = 4;
        }
        
        else{
@@ -66,7 +67,7 @@ class Player{
        if (holdingUp) {
          if(velocity.y == 0 && (world.tileAt(sw).getBlock() != 0 ||
          world.tileAt(se).getBlock() != 0)){
-          velocity.y -= 10;
+          velocity.y -= 9;
           holdingUp = false;
          }
        }
@@ -81,18 +82,20 @@ class Player{
     //println("Before move " + location.y);
     move();
     //println(world.tileAt(location).getBlock());
-    //inside[world.tileAt(location).getBlock()].inAct();
+    //inside[world.tileAt(location).getBlock()].inAct(5);
     //println(world.tileAt(nw).getBlock());
     inside[world.tileAt(nw).getBlock()].inAct(2);
     //println(world.tileAt(ne).getBlock());
     inside[world.tileAt(ne).getBlock()].inAct(1);
     //println(world.tileAt(sw).getBlock());
     //println("After move: " + location.y);
-    inside[world.tileAt(location.x-13,location.y).getBlock()].inAct(7);
+    inside[world.tileAt(location.x-12,location.y+13).getBlock()].inAct(9);
+    inside[world.tileAt(location.x-12,location.y-13).getBlock()].inAct(8);
     inside[world.tileAt(sw).getBlock()].inAct(3);
     //println("After first check "+ location.y);
     //println(world.tileAt(se).getBlock());
-    inside[world.tileAt(location.x+13,location.y).getBlock()].inAct(5);
+    inside[world.tileAt(location.x+12,location.y-13).getBlock()].inAct(5);
+    inside[world.tileAt(location.x+12,location.y+13).getBlock()].inAct(12);
     inside[world.tileAt(se).getBlock()].inAct(4);
     //println("After second check "+ location.y);
     //move();

@@ -3,6 +3,7 @@ Environment world;
 Player player;
 int score;
 boolean badRelocate;
+int glob=0;
 
 
 //#######################TILES#####################################
@@ -97,7 +98,7 @@ void setup(){
   playerIMG=loadImage("player.png");
   background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=holdingSpace=false;
-  badRelocate = false;
+  badRelocate=false;
   size(550, 550);
   frameRate(48);
   world = new Environment();
