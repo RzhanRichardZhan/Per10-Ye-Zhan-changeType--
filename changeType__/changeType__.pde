@@ -2,7 +2,7 @@
 Environment world;
 Player player;
 int score;
-boolean badRelocate;
+boolean badRelocate, secondspace;
 Gun gun;
 int glob=0;
 
@@ -30,7 +30,7 @@ PImage playerIMG;
 PImage background;
 
 //#######################BOOLEANS#################################
-boolean holdingUp, holdingRight, holdingLeft, holdingSpace;
+boolean holdingUp, holdingRight, holdingLeft;
 
 void keyPressed() {
   
@@ -58,35 +58,33 @@ void keyPressed() {
                 
                 break;
               case ' ':
-                
-                  holdingSpace = true;
-                
+                if(secondspace){
+                  if(gun.one == gun.selected){
+                    return;
+                  } gun.two = gun.selected;
+                  secondspace = false;
+                } else {
+                  gun.one = gun.selected; 
+                  gun.two = -1;  
+                  secondspace = true;     
+                }        
                 break;
             }
 }
-void keyReleased(){ println(key);
+void keyReleased(){ 
+  println(key);
      switch (key) {
               case 'W':
               case 'w':
-                  holdingUp = false;
-                
+                  holdingUp = false;          
                   break;
               case 'A':
-              case 'a':
-                
-                  holdingLeft = false;
-                  
+              case 'a':              
+                  holdingLeft = false;                
                 break;
               case 'D':
-              case 'd':
-                
-                  holdingRight = false;
-                
-                break;
-              case ' ':
-                
-                  holdingSpace = false;
-                
+              case 'd':            
+                  holdingRight = false;   
                 break;
             }
 }
@@ -102,7 +100,7 @@ void setup(){
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
   background=loadImage("background.png");
-  holdingUp=holdingRight=holdingLeft=holdingSpace=false;
+  holdingUp=holdingRight=holdingLeft=false;
   badRelocate=false;
   gun = new Gun();
   size(550, 550);
@@ -111,6 +109,7 @@ void setup(){
 }
 
 void gameOver(){
+  gun.one = gun.two = -1;
   world.loadLevel("test.txt");
 }
 void draw(){

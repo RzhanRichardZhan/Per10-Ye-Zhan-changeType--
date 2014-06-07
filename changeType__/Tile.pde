@@ -16,8 +16,15 @@ class Tile{
     in = z;
   }
   void draw(){
-    if (inside[out].outAct() != null){
-      image(inside[out].outAct(),xcor-13,ycor-13);
+    if(gun.one == in && gun.two != -1){
+      image(inside[gun.two].outAct(), xcor-13, ycor-13);
+    } else if(gun.two == in && gun.one != -1){
+      image(inside[gun.one].outAct(), xcor-13, ycor-13);
+    }
+     else{
+      if (inside[out].outAct() != null){
+        image(inside[out].outAct(),xcor-13,ycor-13);
+      }
     }
   }
   void die(){
@@ -25,7 +32,11 @@ class Tile{
     in = 0;
   }
   int getBlock(){
-    return in;
+    if(gun.one == in && gun.two != -1){
+      return gun.two;
+    } else if (gun.two == in)
+      return gun.one;
+    else return in;
   }
   Tile nTile() {
         if (ycor != 0)
