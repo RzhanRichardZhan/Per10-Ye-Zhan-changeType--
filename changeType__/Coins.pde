@@ -8,8 +8,10 @@ class Coins extends Blocks{
     return coinIMG;//placeholder
   }
   void inAct(){
-    //world.tileAt(player.location).die();
-    //score+=100;
+    if (world.tileAt(player.location).getBlock() == 2){
+      world.tileAt(player.location).die();
+      score+=100;
+    }
     
   }
 }

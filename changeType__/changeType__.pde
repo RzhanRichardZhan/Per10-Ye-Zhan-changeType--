@@ -2,6 +2,8 @@
 Environment world;
 Player player;
 int score;
+boolean badRelocate;
+
 
 //#######################TILES#####################################
 int EmptyIn = 0;
@@ -11,6 +13,7 @@ int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
 Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish()};
+ArrayList<Integer> stand;
 
 
 //#######################SPRITES############################
@@ -94,6 +97,7 @@ void setup(){
   playerIMG=loadImage("player.png");
   background=loadImage("background.png");
   holdingUp=holdingRight=holdingLeft=holdingSpace=false;
+  badRelocate = false;
   size(550, 550);
   frameRate(48);
   world = new Environment();
