@@ -69,7 +69,7 @@ class Player{
        if (holdingUp) {
          if(velocity.y == 0 && (world.tileAt(sw).getBlock() != 0 ||
          world.tileAt(se).getBlock() != 0)){
-          velocity.y -= 9;
+          velocity.y = -9;
           holdingUp = false;
          }
        }
