@@ -10,4 +10,7 @@ class Finish extends Blocks{
   void inAct(int i){
     println("CONGRATS");//placeholder
   }
+  void act(int i){
+    inside[FinishIn].inAct(i);
+  }
 }

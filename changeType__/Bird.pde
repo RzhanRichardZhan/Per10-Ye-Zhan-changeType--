@@ -130,12 +130,13 @@ class Bird extends Blocks{
   }
   void inAct(int i){//for swapping
     if (ifStanding(i)){
-      player.velocity.y -= 5;
+      
+      player.velocity.y -= 10;
       world.tileAt(player.location.x,player.location.y+13).die();
       score+=50;
     }
-    if (ifWallLeft(i) || ifWallRight(i) || ifCeiling(i)){
-      gameOver();
+    else if (ifWallLeft(i) || ifWallRight(i) || ifCeiling(i)){
+      //gameOver();
     }
   }
   void draw(){

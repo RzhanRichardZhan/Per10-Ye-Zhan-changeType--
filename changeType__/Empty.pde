@@ -10,4 +10,7 @@ class Empty extends Blocks{
   }
   void inAct(int i){
     return; }
+    
+  void act(int i){
+  }
 }

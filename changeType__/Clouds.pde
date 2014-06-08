@@ -10,4 +10,7 @@ class Clouds extends Blocks{
   void inAct(int i){
     ifStanding(i);
   }
+  void act(int i){
+    inside[CloudsIn].inAct(i);
+  }
 }

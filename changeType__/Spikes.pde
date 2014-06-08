@@ -12,4 +12,7 @@ class Spikes extends Blocks{
     println("oh no, you esploded");//placeholder
     
   }
+  void act(int i){
+    inside[SpikesIn].inAct(i);
+  }
 }

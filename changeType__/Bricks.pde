@@ -14,6 +14,9 @@ class Bricks extends Blocks{
     if (ifCeiling(i)){
     }
   }
+  void act(int i){
+    inside[BricksIn].inAct(i);
+  }
     
 }
   

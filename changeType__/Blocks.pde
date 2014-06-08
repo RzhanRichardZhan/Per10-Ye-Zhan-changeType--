@@ -4,6 +4,7 @@ abstract class Blocks{
   boolean isStandable, isPassable;
   abstract PImage outAct();
   abstract void inAct(int i);
+  abstract void act(int i);
   boolean ifStanding(int i){
     if (i == 3 || i == 4){
      if ((player.sw.y > (world.tileAt(player.sw).ycor-12))

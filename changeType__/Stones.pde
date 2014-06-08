@@ -14,4 +14,7 @@ class Stones extends Blocks{
     ifWallLeft(i);
     ifWallRight(i);
   }
+  void act(int i){
+    inside[StonesIn].inAct(i);
+  }
 }

@@ -16,6 +16,7 @@ class Tile{
     in = z;
   }
   void draw(){
+    
     if(gun.one == in && gun.two != -1){
       image(inside[gun.two].outAct(), xcor-13, ycor-13);
     } else if(gun.two == in && gun.one != -1){
@@ -31,12 +32,12 @@ class Tile{
     out = 0;
     in = 0;
   }
-  int getBlock(){
+  int getBlock(){/*
     if(gun.one == in && gun.two != -1){
       return gun.two;
     } else if (gun.two == in){
       return gun.one;
-  }  else return in; }
+  }  else*/ return out; }
 
   
   Tile nTile() {

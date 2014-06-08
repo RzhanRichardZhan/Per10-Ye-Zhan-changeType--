@@ -19,6 +19,8 @@ int CoinsIn = 2;
 int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
+int CloudsIn = 6;
+int FinishIn = 7;
 int birdIn= 8;
 Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird()};
 ArrayList<Bird> enemies;
@@ -73,6 +75,32 @@ void keyPressed() {
                   } gun.two = gun.selected;
                   space2.trigger();
                   secondspace = false;
+  BricksIn = 1;
+  CoinsIn = 2;
+  GroundIn = 3;
+  SpikesIn = 4;
+  StonesIn = 5;
+  CloudsIn = 6;
+  FinishIn = 7;
+  birdIn= 8;
+  if (gun.one == 1) BricksIn=gun.two;
+  if (gun.two == 1) BricksIn=gun.one;
+  if (gun.one == 2) CoinsIn=gun.two;
+  if (gun.two == 2) CoinsIn=gun.one;
+  if (gun.one == 3) GroundIn=gun.two;
+  if (gun.two == 3) GroundIn=gun.one;
+  if (gun.one == 4) SpikesIn=gun.two;
+  if (gun.two == 4) SpikesIn=gun.one;
+  if (gun.one == 5) StonesIn=gun.two;
+  if (gun.two == 5) StonesIn=gun.one;
+  if (gun.one == 6) CloudsIn=gun.two;
+  if (gun.two == 6) CloudsIn=gun.one;
+  if (gun.one == 7) FinishIn=gun.two;
+  if (gun.two == 7) FinishIn=gun.one;
+  if (gun.one == 8) birdIn=gun.two;
+  if (gun.two == 8) birdIn=gun.one;
+  
+                  
                 } else {
                   gun.one = gun.selected; 
                   gun.two = -1;  
@@ -156,6 +184,15 @@ void gameOver(){
   ded.trigger();
   gun.one = gun.two = -1;
   enemies = new ArrayList<Bird>();
+EmptyIn = 0;
+BricksIn = 1;
+CoinsIn = 2;
+GroundIn = 3;
+SpikesIn = 4;
+StonesIn = 5;
+CloudsIn = 6;
+FinishIn = 7;
+birdIn= 8;
   world.tiles = world.loadLevel("test.txt");
 }
 void fileSelected(File selection) {

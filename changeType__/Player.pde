@@ -89,15 +89,15 @@ class Player{
   void draw(){
     checkKeys();
     move();
-      inside[world.tileAt(location).getBlock()].inAct(5);
-      inside[world.tileAt(nw).getBlock()].inAct(2);
-      inside[world.tileAt(ne).getBlock()].inAct(1);
-      inside[world.tileAt(location.x-12,location.y+13).getBlock()].inAct(9);
-      inside[world.tileAt(location.x-12,location.y-13).getBlock()].inAct(8);
-      inside[world.tileAt(sw).getBlock()].inAct(3);
-      inside[world.tileAt(location.x+12,location.y-13).getBlock()].inAct(5);
-      inside[world.tileAt(location.x+12,location.y+13).getBlock()].inAct(12);
-      inside[world.tileAt(se).getBlock()].inAct(4);
+      inside[world.tileAt(location).getBlock()].act(5);
+      inside[world.tileAt(nw).getBlock()].act(2);
+      inside[world.tileAt(ne).getBlock()].act(1);
+      inside[world.tileAt(location.x-12,location.y+13).getBlock()].act(9);
+      inside[world.tileAt(location.x-12,location.y-13).getBlock()].act(8);
+      inside[world.tileAt(sw).getBlock()].act(3);
+      inside[world.tileAt(location.x+12,location.y-13).getBlock()].act(5);
+      inside[world.tileAt(location.x+12,location.y+13).getBlock()].act(12);
+      inside[world.tileAt(se).getBlock()].act(4);
     //if (!isFacingRight){
       image(playerIMG,(int)location.x-12,(int)location.y-16);
     //}
