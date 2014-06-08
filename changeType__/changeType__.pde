@@ -19,7 +19,7 @@ int CoinsIn = 2;
 int GroundIn = 3;
 int SpikesIn = 4;
 int StonesIn = 5;
-int birdIn= 3;
+int birdIn= 8;
 Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird()};
 ArrayList<Bird> enemies;
 
@@ -41,13 +41,13 @@ boolean holdingUp, holdingRight, holdingLeft;
 
 void keyPressed() {
   
-              println(key);
+              //println(key);
    switch (key) {
               case 'W':
               case 'w':
               
-              println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && !player.onEnemy);
-                 if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)&& !player.onEnemy) && player.velocity.y == 0)){
+              println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)));
+                 if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
               }
@@ -92,7 +92,7 @@ void keyPressed() {
             }
 }
 void keyReleased(){ 
-  println(key);
+  //println(key);
      switch (key) {
               case 'W':
               case 'w':
@@ -136,7 +136,7 @@ void setup(){
   badRelocate=false;
   gun = new Gun();
   enemies = new ArrayList<Bird>();
-  birdIn=3;
+  birdIn=8;
   size(550, 550);
   frameRate(48);
   world = new Environment();
@@ -156,7 +156,7 @@ void gameOver(){
   ded.trigger();
   gun.one = gun.two = -1;
   enemies = new ArrayList<Bird>();
-  world.tiles = world.loadLevel(path);
+  world.tiles = world.loadLevel("test.txt");
 }
 void fileSelected(File selection) {
   if (selection == null) {
@@ -168,12 +168,12 @@ void fileSelected(File selection) {
 void draw(){
   background(background);
   pushMatrix();
-  if(!inlvl){
+  if(!inlvl){/*
     selectInput("Choose a level!", "fileSelected");
     while(path.equals("FFFFFFFF")){
     }
     inlvl = true;
-    world.tiles = world.loadLevel(path);
+    world.tiles = world.loadLevel(path);*/
   }
   world.draw();
   try{

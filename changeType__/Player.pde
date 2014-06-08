@@ -75,7 +75,7 @@ class Player{
        }
        if (holdingUp) {
         if(prevelo.y == 0){
-          velocity.y = -7;
+          velocity.y = -10;
           jump.trigger();
           holdingUp = false;
         }
@@ -87,7 +87,6 @@ class Player{
        
     }
   void draw(){
-    
     checkKeys();
     move();
       inside[world.tileAt(location).getBlock()].inAct(5);

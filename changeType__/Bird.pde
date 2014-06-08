@@ -98,9 +98,13 @@ class Bird extends Blocks{
       if (top()){
         badRelocate=true;
         player.location.y = location.y-36;
-        player.location.add(velocity);
+        player.location.x+=velocity.x*2;
         player.relocate();
         badRelocate=true;
+        if (holdingUp==true){
+          player.velocity.y = -10;
+          holdingUp=false;
+        }
       }
       
       else if (bottom()){
