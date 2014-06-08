@@ -35,6 +35,7 @@ class Gun{
           }
       }  }
     }
+      selected  = -1;
       return -1;
   }
   void draw(){
@@ -44,6 +45,7 @@ class Gun{
       image(inside[two].outAct(), 290, 8);
     }
     if (target() != -1){
+      stroke(255,player.location.y,target());
       line(player.location.x,player.location.y,target(),player.location.y);
     }
   }

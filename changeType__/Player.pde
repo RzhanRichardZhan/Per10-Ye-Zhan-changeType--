@@ -58,14 +58,14 @@ class Player{
       if (holdingLeft && location.x > 13) {
           isFacingRight=false;
           velocity.x = -4;
-          if ((int)random(10) < 1){ 
+          if ((int)random(100) < 5){ 
           walk.trigger();
           }
        }
       else if (holdingRight && location.x < 537) {
         isFacingRight=true;
           velocity.x = 4;
-           if ((int)random(10) < 1){ 
+           if ((int)random(100) < 5){ 
           walk.trigger();
           }
        }
@@ -98,9 +98,9 @@ class Player{
       inside[world.tileAt(location.x+12,location.y-13).getBlock()].act(5);
       inside[world.tileAt(location.x+12,location.y+13).getBlock()].act(12);
       inside[world.tileAt(se).getBlock()].act(4);
-    //if (!isFacingRight){
+   // if (!isFacingRight){
       image(playerIMG,(int)location.x-12,(int)location.y-16);
-    //}
+   // }
     
   }
 }

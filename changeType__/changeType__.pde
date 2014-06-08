@@ -38,6 +38,8 @@ PImage stoneIMG;
 PImage playerIMG;
 PImage background;
 PImage birdIMG;
+PImage mask;
+
 
 //#######################BOOLEANS#################################
 boolean holdingUp, holdingRight, holdingLeft;
@@ -152,6 +154,7 @@ void setup(){
   playerIMG=loadImage("player.png");
   birdIMG=loadImage("bird.png");
   background=loadImage("background.png");
+  mask=loadImage("mask.png"); 
   
   jump = minim.loadSample("jump.wav");
   jump2 = minim.loadSample("jump2.wav");

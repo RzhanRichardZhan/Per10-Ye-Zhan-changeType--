@@ -28,6 +28,5 @@ class Coins extends Blocks{
     
   }
   void act(int i){
-    inside[CoinsIn].inAct(i);
   }
 }

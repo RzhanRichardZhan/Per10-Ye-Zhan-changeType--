@@ -167,7 +167,11 @@ class Bird extends Blocks{
       steps++;
       if (birdIn == 8){
         image(inside[birdIn].outAct(),location.x-18.5, location.y-17);
+        if (birdIn == gun.selected){
+          image(mask, location.x-18.5, location.y-17);
+        }
       }
+
       else {
         image(inside[birdIn].outAct(),location.x-13,location.y-13);
       }

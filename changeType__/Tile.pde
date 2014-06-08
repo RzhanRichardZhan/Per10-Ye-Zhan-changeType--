@@ -25,9 +25,13 @@ class Tile{
      else{
       if (inside[out].outAct() != null){
         image(inside[out].outAct(),xcor-13,ycor-13);
+        if (in == gun.selected){
+          image(mask, xcor-13, ycor-13);
+        }
+        }
       }
     }
-  }
+    
   void die(){
     out = 0;
     in = 0;
