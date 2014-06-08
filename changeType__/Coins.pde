@@ -23,7 +23,7 @@ class Coins extends Blocks{
         else if (i == 8 || i == 9)
         world.tileAt(player.location.x+12,player.location.y).die();
       score+=100;
-      coinso.trigger();
+      //coinso.trigger();
     
     
   }

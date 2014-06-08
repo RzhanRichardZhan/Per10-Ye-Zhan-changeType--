@@ -102,6 +102,7 @@ class Tile{
     String toString(){
       String s = "x: " + xcor;
       s+="\ny: "+ycor;
+      s+="\n "+in;
       return s;
     }
   

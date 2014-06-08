@@ -12,6 +12,13 @@ class Bricks extends Blocks{
     ifWallLeft(i);
     ifWallRight(i);
     if (ifCeiling(i)){
+      println("i dont work");
+      if (i == 1){
+        world.tileAt(player.location.x+13,player.location.y-26).die();
+      }
+      else{
+        world.tileAt(player.location.x-13,player.location.y-26).die();
+      }
     }
   }
   void act(int i){

@@ -22,8 +22,9 @@ int SpikesIn = 4;
 int StonesIn = 5;
 int CloudsIn = 6;
 int FinishIn = 7;
-int birdIn= 8;
-Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird()};
+int birdIn = 8;
+int SpringsIn = 9;
+Blocks[] inside={new Empty(), new Bricks(), new Coins(), new Ground(), new Spikes(), new Stones(), new Clouds(), new Finish(), new Bird(), new Springs()};
 ArrayList<Bird> enemies;
 
 
@@ -38,6 +39,7 @@ PImage stoneIMG;
 PImage playerIMG;
 PImage background;
 PImage birdIMG;
+PImage springIMG;
 PImage mask;
 
 
@@ -78,14 +80,7 @@ void keyPressed() {
                   } gun.two = gun.selected;
                   space2.trigger();
                   secondspace = false;
-  BricksIn = 1;
-  CoinsIn = 2;
-  GroundIn = 3;
-  SpikesIn = 4;
-  StonesIn = 5;
-  CloudsIn = 6;
-  FinishIn = 7;
-  birdIn= 8;
+  reset();
   if (gun.one == 1) BricksIn=gun.two;
   if (gun.two == 1) BricksIn=gun.one;
   if (gun.one == 2) CoinsIn=gun.two;
@@ -102,6 +97,8 @@ void keyPressed() {
   if (gun.two == 7) FinishIn=gun.one;
   if (gun.one == 8) birdIn=gun.two;
   if (gun.two == 8) birdIn=gun.one;
+  if (gun.one == 9) SpringsIn=gun.two;
+  if (gun.two == 9) SpringsIn=gun.one;
   
                   
                 } else {
@@ -139,7 +136,17 @@ void keyReleased(){
                 break;
             }
 }
-  
+void reset(){
+  BricksIn = 1;
+  CoinsIn = 2;
+  GroundIn = 3;
+  SpikesIn = 4;
+  StonesIn = 5;
+  CloudsIn = 6;
+  FinishIn = 7;
+  birdIn= 8;
+  SpringsIn = 9;
+}
     
 void setup(){
   minim = new Minim(this);
@@ -153,6 +160,7 @@ void setup(){
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
   birdIMG=loadImage("bird.png");
+  springIMG=loadImage("spring.png");
   background=loadImage("background.png");
   mask=loadImage("mask.png"); 
   
@@ -188,16 +196,8 @@ void gameOver(){
   ded.trigger();
   gun.one = gun.two = -1;
   enemies = new ArrayList<Bird>();
-EmptyIn = 0;
-BricksIn = 1;
-CoinsIn = 2;
-GroundIn = 3;
-SpikesIn = 4;
-StonesIn = 5;
-CloudsIn = 6;
-FinishIn = 7;
-birdIn= 8;
-  world.tiles = world.loadLevel("test.txt");
+reset();
+  world.tiles = world.loadLevel("level2.txt");
 }
 void fileSelected(File selection) {
   if (selection == null) {

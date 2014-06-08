@@ -9,24 +9,24 @@ class Bird extends Blocks{
   Bird(int i, int d, int x, int y){
     life = true;
     steps = 0;
-    path = i;
+    path = i*25;
     velocity = new PVector();
     if (d == 0){
-      velocity.y = 1;
+      velocity.y = -1;
     }
     else if (d == 90){
       velocity.x = 1;
     }
    else if (d == 180){
-    velocity.y = -1;
+    velocity.y = 1;
    }
   else{
    velocity.x = -1;
 
   }
     location = new PVector();
-    location.x = x;
-    location.y = y;
+    location.x = x*25+18.5;
+    location.y = y*25-17;
   }
   PImage outAct(){
     return birdIMG;
@@ -113,6 +113,56 @@ class Bird extends Blocks{
         player.relocate();
         player.velocity.y=0;
         badRelocate=true;
+      }
+      else if (left()){
+        badRelocate = true;
+        player.location.x = location.x-13;
+        player.relocate();
+        badRelocate = true;
+      }
+      else if (right()){
+        badRelocate = true;
+        player.location.x = location.x+30.5;
+        player.relocate();
+        badRelocate = true;
+      }
+    }
+    else if (birdIn == 4){
+      if (top() || bottom() || left() || right()){
+        gameOver();
+      }
+    }
+    else if (birdIn == 2){
+      if (top() || bottom() || left() || right()){
+        score+=100;
+        life = false;
+      }
+    }
+    else if (birdIn ==1){
+      if (top()){
+        badRelocate=true;
+        player.location.y = location.y-36;
+        player.location.x+=velocity.x*2;
+        player.relocate();
+        badRelocate=true;
+        if (holdingUp==true){
+          player.velocity.y = -10;
+          holdingUp=false;
+        }
+      }
+      
+      else if (bottom()){
+        badRelocate = true;
+        player.location.y = location.y+36;
+        player.relocate();
+        player.velocity.y=0;
+        badRelocate=true;
+        if (i == 1){
+          world.tileAt(player.location.x+13,player.location.y-13).die();
+        }
+        else{
+          world.tileAt(player.location.x-13,player.location.y-13).die();
+        }
       }
       else if (left()){
         badRelocate = true;
