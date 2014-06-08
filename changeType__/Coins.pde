@@ -11,6 +11,7 @@ class Coins extends Blocks{
     if (world.tileAt(player.location).getBlock() == 2){
       world.tileAt(player.location).die();
       score+=100;
+      coinso.trigger();
     }
     
   }

@@ -58,10 +58,16 @@ class Player{
       if (holdingLeft && location.x > 13) {
           isFacingRight=false;
           velocity.x = -4;
+          if ((int)random(10) < 1){ 
+          walk.trigger();
+          }
        }
       else if (holdingRight && location.x < 537) {
         isFacingRight=true;
           velocity.x = 4;
+           if ((int)random(10) < 1){ 
+          walk.trigger();
+          }
        }
        
        else{
@@ -70,6 +76,7 @@ class Player{
        if (holdingUp) {
         if(prevelo.y == 0){
           velocity.y = -7;
+          jump.trigger();
           holdingUp = false;
         }
            prevelo.y = velocity.y;
