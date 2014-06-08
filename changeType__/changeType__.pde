@@ -4,9 +4,8 @@ import ddf.minim.*;
 Environment world;
 Player player;
 int score;
-boolean badRelocate, secondspace;
+boolean badRelocate, secondspace, inlvl;
 Gun gun;
-<<<<<<< HEAD
 String path = "FFFFFFFF";
 Minim minim;
 AudioSample jump, jump2, coinso, space1, space2, ded, walk;
@@ -34,7 +33,6 @@ PImage groundIMG;
 PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
-PImage birdIMG;
 PImage background;
 PImage birdIMG;
 
@@ -160,6 +158,13 @@ void gameOver(){
   enemies = new ArrayList<Bird>();
   world.tiles = world.loadLevel(path);
 }
+void fileSelected(File selection) {
+  if (selection == null) {
+  }
+  else {
+     path = selection.getAbsolutePath();
+   }
+ }
 void draw(){
   background(background);
   pushMatrix();
@@ -182,7 +187,7 @@ void draw(){
   player.draw();
   gun.draw();
   try{
-    for (Bird b : Enemies){
+    for (Bird b : enemies){
       b.draw();
     }
   }
