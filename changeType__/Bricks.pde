@@ -12,7 +12,6 @@ class Bricks extends Blocks{
     ifWallLeft(i);
     ifWallRight(i);
     if (ifCeiling(i)){
-    //  world.tileAt(player.location).nTile().die();
     }
   }
     

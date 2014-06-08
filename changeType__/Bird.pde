@@ -22,6 +22,7 @@ class Bird extends Blocks{
    }
   else{
    velocity.x = -1;
+
   }
     location = new PVector();
     location.x = x;
@@ -60,8 +61,7 @@ class Bird extends Blocks{
    && (((player.sw.x > location.x-12)
    && (player.sw.x < location.x+12))
    || ((player.se.x > location.x-12)
-   && (player.se.x < location.x+12)))
-   
+   && (player.se.x < location.x+12)))  
     );
   }
   void act(int i){

@@ -37,6 +37,8 @@ class Tile{
     } else if (gun.two == in){
       return gun.one;
   }  else return in; }
+
+  
   Tile nTile() {
         if (ycor != 0)
             return world.tiles[ycor - 1][xcor];
@@ -92,6 +94,7 @@ class Tile{
         else
             return null;
     }
+  
 }
 
 

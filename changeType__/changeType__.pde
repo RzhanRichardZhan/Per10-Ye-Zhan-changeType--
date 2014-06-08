@@ -4,8 +4,9 @@ import ddf.minim.*;
 Environment world;
 Player player;
 int score;
-boolean badRelocate, secondspace, inlvl;
+boolean badRelocate, secondspace;
 Gun gun;
+<<<<<<< HEAD
 String path = "FFFFFFFF";
 Minim minim;
 AudioSample jump, jump2, coinso, space1, space2, ded, walk;
@@ -35,6 +36,7 @@ PImage stoneIMG;
 PImage playerIMG;
 PImage birdIMG;
 PImage background;
+PImage birdIMG;
 
 //#######################BOOLEANS#################################
 boolean holdingUp, holdingRight, holdingLeft;
@@ -45,8 +47,9 @@ void keyPressed() {
    switch (key) {
               case 'W':
               case 'w':
-                println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && !player.onEnemy);
-               if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)&& !player.onEnemy) && player.velocity.y == 0)){
+              
+              println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && !player.onEnemy);
+                 if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)&& !player.onEnemy) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
               }
@@ -108,15 +111,10 @@ void keyReleased(){
             }
 }
   
-void fileSelected(File selection) {
-    if (selection == null) {
-} else {
-    path = selection.getAbsolutePath();
-    }
-}
     
 void setup(){
   minim = new Minim(this);
+  birdIMG=loadImage("bird.png");
   brickIMG=loadImage("brick.png");
   cloudIMG=loadImage("cloud.png");
   coinIMG=loadImage("coin.png");
@@ -137,10 +135,10 @@ void setup(){
   walk = minim.loadSample("walk.wav");
   
   holdingUp=holdingRight=holdingLeft=false;
-  inlvl=false;
   badRelocate=false;
   gun = new Gun();
   enemies = new ArrayList<Bird>();
+  birdIn=3;
   size(550, 550);
   frameRate(48);
   world = new Environment();
@@ -162,7 +160,6 @@ void gameOver(){
   enemies = new ArrayList<Bird>();
   world.tiles = world.loadLevel(path);
 }
-
 void draw(){
   background(background);
   pushMatrix();
@@ -184,5 +181,13 @@ void draw(){
     }
   player.draw();
   gun.draw();
+  try{
+    for (Bird b : Enemies){
+      b.draw();
+    }
+  }
+  catch(Exception e){
+    gameOver();
+  }
   popMatrix();
 }

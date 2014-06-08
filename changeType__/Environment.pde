@@ -8,7 +8,7 @@ class Environment{
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
     } */
-    //tiles = loadLevel(path);
+    tiles = loadLevel("test.txt");
   }
   Tile[][] loadLevel(String path){
     player = new Player(2,13);//base 0
