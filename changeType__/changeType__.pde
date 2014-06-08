@@ -13,6 +13,7 @@ AudioPlayer main;
 
 
 //#######################TILES#####################################
+int whichIsBird = 0;
 int EmptyIn = 0;
 int BricksIn = 1;
 int CoinsIn = 2;

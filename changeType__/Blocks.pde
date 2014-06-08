@@ -65,6 +65,19 @@ abstract class Blocks{
     }
     return false;
   }
+  boolean ifCeiling2(){
+    if ((player.nw.y < (world.tileAt(player.location.x,player.location.y-13).ycor+12))
+   && (player.onw.y >= (world.tileAt(player.location.x,player.location.y-13).ycor+12)) ){
+     badRelocate= true;
+      player.location.y = world.tileAt(player.location).ycor+2;
+      player.relocate(); 
+      badRelocate = true;
+      player.velocity.y = 0;
+   return true;
+   }
+    
+    return false;
+  }
   
 }
   

@@ -95,6 +95,11 @@ class Tile{
         else
             return null;
     }
+    String toString(){
+      String s = "x: " + xcor;
+      s+="\ny: "+ycor;
+      return s;
+    }
   
 }
 

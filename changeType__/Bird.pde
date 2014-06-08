@@ -132,11 +132,25 @@ class Bird extends Blocks{
     if (ifStanding(i)){
       
       player.velocity.y -= 10;
-      world.tileAt(player.location.x,player.location.y+13).die();
+      println(world.tileAt(player.location.x,player.location.y+26));
+      if (i == 3){
+      world.tileAt(player.location.x-13,player.location.y+26).die();
+      }
+      else{
+        
+      world.tileAt(player.location.x+13,player.location.y+26).die();
+      }
+      //println("work");
       score+=50;
     }
-    else if (ifWallLeft(i) || ifWallRight(i) || ifCeiling(i)){
-      //gameOver();
+    else{
+      if( world.tileAt(player.location.x +14, player.location.y).getBlock() == birdIn ||
+      world.tileAt(player.location.x -14, player.location.y).getBlock() == birdIn ||
+      world.tileAt(player.location.x, player.location.y-14).getBlock() == birdIn){
+        gameOver();
+        
+      }
+      
     }
   }
   void draw(){
