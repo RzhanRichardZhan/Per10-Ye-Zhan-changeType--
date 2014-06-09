@@ -33,7 +33,7 @@ Known bugs:
 
 COLLISIONS ARE VERY BUGGY
 
-* The hit box for the spring strangely only uses the southeast point of the character
+* The hit box for the spring strangely only uses the southwest point of the character
 * You can hit a sweet spot between Steel or Dirt blocks to get an additional jump
 * If you were to jump on a flying enemy that was swapped for a block that is standable, the player will constantly move up and down.
 * Enemy hit detection is larger than may seem
