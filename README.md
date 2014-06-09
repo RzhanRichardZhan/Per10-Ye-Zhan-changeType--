@@ -2,16 +2,26 @@ Per10-Ye-Zhan-changeType--
 ==========================
 
 What is changeType()?
+
 changeType() is a puzzle platformer originally created by Nitrome Limited.
+
 The player has the ability to swap different blocks in order to get to the finish block.
+
 The player may also swap enemies, coins, and even the finish line.
 
+
 How to Play:
+
 W - Jump
+
 A - Move Left
+
 D - Move Right
+
 E - Undo Swap
+
 Space - Swap
+
 
 Known bugs:
 
