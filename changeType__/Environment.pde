@@ -106,11 +106,11 @@ class Environment{
                 output[k][j] = new Tile(j,k,0);
                 enemies.add(new Bird(5,90,j,k));
                 break;
-              case 'y':
+              case '?':
                 output[k][j] = new Tile(j,k,0);
                 enemies.add(new Bird(6,90,j,k));
                 break;
-              case 'u':
+              case '>':
                 output[k][j] = new Tile(j,k,0);
                 enemies.add(new Bird(7,90,j,k));
                 break;
@@ -162,6 +162,14 @@ class Environment{
                 output[k][j] = new Tile(j,k,0);
                 enemies.add(new Bird(1,270,j,k));
                 break;
+                            case 'y':
+                output[k][j] = new Tile(j,k,0);
+                enemies.add(new Bird(2,270,j,k));
+                break;
+                              case 'x':
+                output[k][j] = new Tile(j,k,0);
+                enemies.add(new Bird(1,270,j,k));
+                break;
             
             }
             at++;
@@ -202,7 +210,7 @@ class Environment{
         if (row < 22)
             return tiles[row][col];
         else{
-          println("DEAD");
+          //println("DEAD");
           gameOver();
           return tiles[0][0];
         }

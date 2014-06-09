@@ -166,14 +166,14 @@ class Bird extends Blocks{
         
       }
       else if (left()){
-        println("I don't work");
+       // println("I don't work");
         badRelocate = true;
         player.location.x = location.x-13;
         player.relocate();
         badRelocate = true;
       }
       else if (right()){
-        println("I don't work");
+       // println("I don't work");
         badRelocate = true;
         player.location.x = location.x+30.5;
         player.relocate();

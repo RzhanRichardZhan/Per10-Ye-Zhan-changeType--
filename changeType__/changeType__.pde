@@ -118,13 +118,8 @@ void keyPressed() {
                 break;
               case 'R':
               case 'r':
-                 if(inlvl){
                    gameOver();
-                 }
                  break;
-              case '-':
-                  inlvl = false;
-              break;
               case 'E':
               case 'e':
                 gun.two = -1;  
@@ -166,6 +161,8 @@ void reset(){
 void setup(){
   levels = new Stack<String>();
   levels.push("level6.txt");
+  levels.push("level4.txt");
+  levels.push("level3.txt");
   levels.push("level2.txt");
   levels.push("level1.txt");
   
@@ -202,7 +199,7 @@ void setup(){
   frameRate(48);
   world = new Environment();
   main = minim.loadFile("bgm.mp3");
-  main.loop(0);
+  main.play(0);
   main.setGain(-10); 
   jump.setGain(10);
   jump2.setGain(10);
@@ -236,15 +233,20 @@ void fileSelected(File selection) {
      path = selection.getAbsolutePath();
    }
  }
+
 void draw(){
+      if(!main.isPlaying()){
+   main.rewind();
+    main.play();
+  }
   background(background);
   pushMatrix();
   if(!inlvl){/*
-    selectInput("Choose a level!", "fileSelected");
-    while(path.equals("FFFFFFFF")){
-    }
-    inlvl = true;
-    world.tiles = world.loadLevel(path);*/
+selectInput("Choose a level!", "fileSelected");
+while(path.equals("FFFFFFFF")){
+}
+inlvl = true;
+world.tiles = world.loadLevel(path);*/
   }
   world.draw();
   try{
@@ -268,3 +270,5 @@ void draw(){
   }
   popMatrix();
 }
+
+

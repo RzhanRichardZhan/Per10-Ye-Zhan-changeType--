@@ -9,7 +9,7 @@ class Spikes extends Blocks{
   }
   void inAct(int i){
     gameOver();
-    println("oh no, you esploded");//placeholder
+    //println("oh no, you esploded");//placeholder
     
   }
   void act(int i){

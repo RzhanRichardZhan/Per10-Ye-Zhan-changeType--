@@ -10,7 +10,7 @@ class Finish extends Blocks{
   void inAct(int i){
     levels.pop();
     gameOver();
-    println("CONGRATS");//placeholder
+    //println("CONGRATS");//placeholder
   }
   void act(int i){
     
