@@ -22,12 +22,15 @@ E - Undo Swap
 
 Space - Swap
 
-
-Known bugs:
+Not bugs:
 
 * If an enemy is swapped with a block, that block IS SUPPOSE to maintain the enemy's movement.
 * The cogwheel at the top right serves no purpose.
+
+Known bugs:
+
 COLLISIONS ARE VERY BUGGY
+
 * The hit box for the spring strangely only uses the southeast point of the character
 * You can hit a sweet spot between Steel or Dirt blocks to get an additional jump
 * If you were to jump on a flying enemy that was swapped for a block that is standable, the player will constantly move up and down.
