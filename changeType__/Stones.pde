@@ -15,6 +15,11 @@ class Stones extends Blocks{
     ifWallRight(i);
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[5].inAct(i);
+      return;
+    }
     inside[StonesIn].inAct(i);
   }
 }

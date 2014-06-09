@@ -11,6 +11,11 @@ class Clouds extends Blocks{
     ifStanding(i);
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[6].inAct(i);
+      return;
+    }
     inside[CloudsIn].inAct(i);
   }
 }

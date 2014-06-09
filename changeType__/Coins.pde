@@ -9,7 +9,6 @@ class Coins extends Blocks{
   }
   void inAct(int i){
     
-      println("Good");
       if (i == 1)
         world.tileAt(player.ne).die();
       else if (i == 2)
@@ -28,6 +27,11 @@ class Coins extends Blocks{
     
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[2].inAct(i);
+      return;
+    }
     inside[CoinsIn].inAct(i);
   }
 }

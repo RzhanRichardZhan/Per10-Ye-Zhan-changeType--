@@ -10,6 +10,7 @@ class Gun{
           return i;
         }
         for (Bird b : enemies){
+          if (b.life){
           if (player.location.y > b.location.y-13 && player.location.y < b.location.y+13){
             if (i > b.location.x-13 && i < b.location.x+13){
               selected = 8;
@@ -17,7 +18,7 @@ class Gun{
             }
           }
         }
-      }
+      }}
     }
     else{
       for (int i = (int)player.location.x; i > 0; i-=25){
@@ -39,7 +40,6 @@ class Gun{
       return -1;
   }
   void draw(){
-    println(selected);
     if(one != -1){
       image(inside[one].outAct(), 240, 8);
     } if (two != -1){

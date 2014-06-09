@@ -15,6 +15,11 @@ class Springs extends Blocks{
     ifWallRight(i);
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[9].inAct(i);
+      return;
+    }
     inside[SpringsIn].inAct(i);
   }
 }

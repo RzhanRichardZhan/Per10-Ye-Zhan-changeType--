@@ -1,5 +1,5 @@
 import ddf.minim.*;
-
+import java.util.Stack;
 //#######################MAIN OBJECTS###########################
 Environment world;
 Player player;
@@ -10,6 +10,7 @@ String path = "FFFFFFFF";
 Minim minim;
 AudioSample jump, jump2, coinso, space1, space2, ded, walk;
 AudioPlayer main;
+Stack<String> levels;
 
 
 //#######################TILES#####################################
@@ -54,7 +55,6 @@ void keyPressed() {
               case 'W':
               case 'w':
               
-              println(((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)));
                  if(player.velocity.y < 0 || (((world.tileAt(player.sw).getBlock() == 0 && world.tileAt(player.se).getBlock()==0)) && player.velocity.y == 0)){
                                      holdingUp = false;
                                      return;
@@ -164,6 +164,11 @@ void reset(){
 }
     
 void setup(){
+  levels = new Stack<String>();
+  levels.push("level6.txt");
+  levels.push("level2.txt");
+  levels.push("level1.txt");
+  
   minim = new Minim(this);
   birdIMG=loadImage("bird.png");
   brickIMG=loadImage("brick.png");
@@ -212,9 +217,17 @@ void gameOver(){
   ded.trigger();
   score = 0;
   gun.one = gun.two = -1;
-  enemies = new ArrayList<Bird>();
+  enemies.clear();
 reset();
-  world.tiles = world.loadLevel("level2.txt");
+//world.tiles = world.loadLevel("test.txt");
+  
+  
+  if (levels.empty()){
+    exit();
+  }
+  else{
+  world.tiles = world.loadLevel(levels.peek());
+  }
 }
 void fileSelected(File selection) {
   if (selection == null) {

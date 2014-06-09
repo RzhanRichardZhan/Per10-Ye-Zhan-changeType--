@@ -69,7 +69,6 @@ class Bird extends Blocks{
       if (top()
    
     ){
-     println("O");
      badRelocate= true;
       player.location.y = location.y-33;
       player.relocate();
@@ -90,8 +89,9 @@ class Bird extends Blocks{
     else if (birdIn == 6){
       if (top()){
         badRelocate=true;
-        player.location.y = location.y-33;
-        player.location.add(velocity);
+        player.location.y = location.y-36;
+        player.location.y +=velocity.y*8;
+        player.location.x+=velocity.x*2;
         player.relocate();
         badRelocate=true;
       }
@@ -100,6 +100,7 @@ class Bird extends Blocks{
       if (top()){
         badRelocate=true;
         player.location.y = location.y-36;
+        player.location.y +=velocity.y*8;
         player.location.x+=velocity.x*2;
         player.relocate();
         badRelocate=true;
@@ -142,9 +143,11 @@ class Bird extends Blocks{
     }
     else if (birdIn ==1){
       if (top()){
+        println("i work");
         badRelocate=true;
         player.location.y = location.y-36;
-        player.location.x+=velocity.x*2;
+        player.location.y += velocity.y*8;
+        player.location.x += velocity.x*2;
         player.relocate();
         badRelocate=true;
         if (holdingUp==true){
@@ -159,20 +162,18 @@ class Bird extends Blocks{
         player.relocate();
         player.velocity.y=0;
         badRelocate=true;
-        if (i == 1){
-          world.tileAt(player.location.x+13,player.location.y-13).die();
-        }
-        else{
-          world.tileAt(player.location.x-13,player.location.y-13).die();
-        }
+          life = false;
+        
       }
       else if (left()){
+        println("I don't work");
         badRelocate = true;
         player.location.x = location.x-13;
         player.relocate();
         badRelocate = true;
       }
       else if (right()){
+        println("I don't work");
         badRelocate = true;
         player.location.x = location.x+30.5;
         player.relocate();
@@ -184,7 +185,6 @@ class Bird extends Blocks{
     if (ifStanding(i)){
       
       player.velocity.y -= 10;
-      println(world.tileAt(player.location.x,player.location.y+26));
       if (i == 3){
       world.tileAt(player.location.x-13,player.location.y+26).die();
         ded.trigger();

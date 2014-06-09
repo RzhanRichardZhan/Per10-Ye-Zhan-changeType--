@@ -8,7 +8,8 @@ class Environment{
         tiles[i][j] = new Tile(i,j,(int)random(8));
       }
     } */
-    tiles = loadLevel("level2.txt");
+    //tiles = loadLevel("test.txt");
+    tiles = loadLevel(levels.peek());
   }
   Tile[][] loadLevel(String path){
     Tile[][] output = new Tile[23][23];

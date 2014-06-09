@@ -8,9 +8,16 @@ class Finish extends Blocks{
     return finishIMG;//placeholder
   }
   void inAct(int i){
+    levels.pop();
+    gameOver();
     println("CONGRATS");//placeholder
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[7].inAct(i);
+      return;
+    }
     inside[FinishIn].inAct(i);
   }
 }

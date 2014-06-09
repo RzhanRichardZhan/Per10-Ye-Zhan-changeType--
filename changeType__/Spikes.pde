@@ -13,6 +13,11 @@ class Spikes extends Blocks{
     
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[4].inAct(i);
+      return;
+    }
     inside[SpikesIn].inAct(i);
   }
 }

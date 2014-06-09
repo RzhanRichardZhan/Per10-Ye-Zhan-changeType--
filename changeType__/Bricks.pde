@@ -12,7 +12,6 @@ class Bricks extends Blocks{
     ifWallLeft(i);
     ifWallRight(i);
     if (ifCeiling(i)){
-      println("i dont work");
       if (i == 1){
         world.tileAt(player.location.x+13,player.location.y-26).die();
       }
@@ -22,6 +21,11 @@ class Bricks extends Blocks{
     }
   }
   void act(int i){
+    
+    if(GroundIn == -1){
+      inside[1].inAct(i);
+      return;
+    }
     inside[BricksIn].inAct(i);
   }
     
