@@ -39,6 +39,7 @@ class Gun{
       return -1;
   }
   void draw(){
+    println(selected);
     if(one != -1){
       image(inside[one].outAct(), 240, 8);
     } if (two != -1){

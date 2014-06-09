@@ -7,7 +7,8 @@ class Springs extends Blocks{
   }
   void inAct(int i){ 
     if(ifStanding(i)){
-      player.velocity.y = -13;
+                jump.trigger();
+      player.velocity.y = -11;
     }
     ifCeiling(i);
     ifWallLeft(i);

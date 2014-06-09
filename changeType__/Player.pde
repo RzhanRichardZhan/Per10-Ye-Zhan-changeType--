@@ -75,7 +75,7 @@ class Player{
        }
        if (holdingUp) {
         if(prevelo.y == 0){
-          velocity.y = -10;
+          velocity.y = -8;
           jump.trigger();
           holdingUp = false;
         }
@@ -98,9 +98,9 @@ class Player{
       inside[world.tileAt(location.x+12,location.y-13).getBlock()].act(5);
       inside[world.tileAt(location.x+12,location.y+13).getBlock()].act(12);
       inside[world.tileAt(se).getBlock()].act(4);
-   // if (!isFacingRight){
+   if (!isFacingRight){
       image(playerIMG,(int)location.x-12,(int)location.y-16);
-   // }
+    } else image(playerIMG2,(int)location.x-12,(int)location.y-16);
     
   }
 }

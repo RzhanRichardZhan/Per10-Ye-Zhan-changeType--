@@ -76,6 +76,8 @@ class Bird extends Blocks{
       badRelocate = true;
       player.velocity.y = -5;
       life = false;
+            score+=50;
+           // 
     }
     else if (left() || right() || bottom()){
       gameOver();
@@ -185,10 +187,12 @@ class Bird extends Blocks{
       println(world.tileAt(player.location.x,player.location.y+26));
       if (i == 3){
       world.tileAt(player.location.x-13,player.location.y+26).die();
+        ded.trigger();
       }
       else{
         
       world.tileAt(player.location.x+13,player.location.y+26).die();
+        ded.trigger();
       }
       //println("work");
       score+=50;
@@ -225,6 +229,7 @@ class Bird extends Blocks{
       else {
         image(inside[birdIn].outAct(),location.x-13,location.y-13);
       }
+      return;
     }
   }
     

@@ -14,6 +14,10 @@ class Ground extends Blocks{
     ifWallRight(i);
   }
   void act(int i){
-    inside[GroundIn].inAct(i);
+    if(GroundIn == -1){
+      inside[3].inAct(i);
+      return;
+    }
+      inside[GroundIn].inAct(i);
   }
 }

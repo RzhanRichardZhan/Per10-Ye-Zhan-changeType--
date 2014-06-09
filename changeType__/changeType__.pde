@@ -4,7 +4,7 @@ import ddf.minim.*;
 Environment world;
 Player player;
 int score;
-boolean badRelocate, secondspace, inlvl;
+boolean badRelocate, secondspace, thirdspace, inlvl;
 Gun gun;
 String path = "FFFFFFFF";
 Minim minim;
@@ -37,6 +37,7 @@ PImage groundIMG;
 PImage spikeIMG;
 PImage stoneIMG;
 PImage playerIMG;
+PImage playerIMG2;
 PImage background;
 PImage birdIMG;
 PImage springIMG;
@@ -75,6 +76,10 @@ void keyPressed() {
                 break;
               case ' ':
                 if(secondspace){
+                  if(gun.one == -1){
+                    secondspace = false;
+                    return;
+                  }
                   if(gun.one == gun.selected){
                     return;
                   } gun.two = gun.selected;
@@ -102,6 +107,9 @@ void keyPressed() {
   
                   
                 } else {
+                gun.two = -1;  
+                gun.one = -1;  
+                reset();
                   gun.one = gun.selected; 
                   gun.two = -1;  
                   space1.trigger();
@@ -117,6 +125,13 @@ void keyPressed() {
               case '-':
                   inlvl = false;
               break;
+              case 'E':
+              case 'e':
+                gun.two = -1;  
+                gun.one = -1;  
+                reset();
+                secondspace = false;
+                break;
             }
 }
 void keyReleased(){ 
@@ -159,6 +174,7 @@ void setup(){
   spikeIMG=loadImage("spikes.png");
   stoneIMG=loadImage("stone.png");
   playerIMG=loadImage("player.png");
+  playerIMG2=loadImage("player2.png");
   birdIMG=loadImage("bird.png");
   springIMG=loadImage("spring.png");
   background=loadImage("background.png");
@@ -194,6 +210,7 @@ void setup(){
 
 void gameOver(){
   ded.trigger();
+  score = 0;
   gun.one = gun.two = -1;
   enemies = new ArrayList<Bird>();
 reset();
@@ -227,6 +244,7 @@ void draw(){
     }
   player.draw();
   gun.draw();
+  text(score, 120, 10);
   try{
     for (Bird b : enemies){
       b.draw();
