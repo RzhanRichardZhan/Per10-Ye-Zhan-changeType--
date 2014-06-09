@@ -20,6 +20,8 @@ D - Move Right
 
 E - Undo Swap
 
+R - Restart
+
 Space - Swap
 
 Not bugs:
